@@ -1,0 +1,331 @@
+/* ---- fonts ---- */
+/* ============================================================
+   Sttar — Fonts
+   The Sttar type system is set entirely in Inter.
+   The "Sttar" wordmark is Inter Bold (700) live text; the sparkle mark is an SVG (assets/logo).
+   Mark + wordmark are black or white only — never an accent colour.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..800&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ---- colors ---- */
+/* ============================================================
+   Sttar — Color tokens
+   Palette transcribed from the Sttar Figma "Colors" + "Semantic Color" frames.
+   Three expressive brand colors (Hot Pink, Burnt Orange, Neon Yellow) +
+   two accent-only neons (Electric Blue, Aqua) + a warm-leaning neutral ramp.
+   ============================================================ */
+
+:root {
+  /* ---- Hot Pink — the primary brand color ---- */
+  --pink-100: #FEE5F4;
+  --pink-200: #FFCBEB;
+  --pink-300: #FFA1D9;
+  --pink-400: #FF4FB2;
+  --pink-500: #FA3AA1;
+  --pink-600: #EA187E; /* brand anchor */
+  --pink-700: #A80C52;
+  --pink-800: #8C0F46;
+  --pink-900: #560127;
+
+  /* ---- Burnt Orange — warm secondary; its 50 tint is the app canvas ---- */
+  --orange-50:  #F7F1EA; /* warm cream — default screen background */
+  --orange-100: #FDE8E3;
+  --orange-200: #FCD5CC;
+  --orange-300: #F48D75;
+  --orange-400: #E85C3C;
+  --orange-500: #D64C2C;
+  --orange-600: #B43C21;
+  --orange-700: #95351F;
+  --orange-800: #43290C;
+  --orange-900: #291907;
+
+  /* ---- Neon Yellow ---- */
+  --yellow-100: #FFFFC1;
+  --yellow-200: #FFFC86;
+  --yellow-300: #FFF141;
+  --yellow-400: #FFD300;
+  --yellow-500: #D19B00;
+  --yellow-600: #A66F02;
+  --yellow-700: #89560A;
+  --yellow-800: #74460F;
+  --yellow-900: #442504;
+
+  /* ---- Electric Blue — accent elements only ---- */
+  --blue-100: #DDEBFF;
+  --blue-200: #C2D9FF;
+  --blue-300: #9CBFFF;
+  --blue-400: #7599FF;
+  --blue-500: #4A6CFF;
+  --blue-600: #364BF5;
+  --blue-700: #2A3AD8;
+  --blue-800: #2534AE;
+  --blue-900: #161C50;
+
+  /* ---- Aqua Neon — accent elements only ---- */
+  --aqua-100: #C0FFFC;
+  --aqua-200: #81FFFB;
+  --aqua-300: #3AFFFA;
+  --aqua-400: #00FFF0;
+  --aqua-500: #00B7B1;
+  --aqua-600: #00918E;
+  --aqua-700: #007272;
+  --aqua-800: #045D5D;
+  --aqua-900: #00373A;
+
+  /* ---- Neutral — warm-cool grey ramp ---- */
+  --neutral-50:  #FCFCFB;
+  --neutral-100: #FAFAF8;
+  --neutral-200: #D1D1D1;
+  --neutral-300: #B0B0B0;
+  --neutral-400: #6D6D6D;
+  --neutral-500: #5D5D5D;
+  --neutral-600: #454545;
+  --neutral-700: #3D3D3D;
+  --neutral-800: #121212;
+
+  /* ---- Standalone semantic hues ---- */
+  --red:   #F23535; /* error */
+  --green: #34B56A; /* success */
+  --white: #FFFFFF;
+  --black: #121212;
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in product code, not the ramp.
+     ============================================================ */
+
+  /* Content — text & icons */
+  --text-heading:        var(--neutral-800);
+  --text-heading-soft:   var(--neutral-500);
+  --text-heading-inverse:var(--white);
+  --text-heading-muted:  var(--neutral-400);
+  --text-body:           var(--neutral-500);
+  --text-body-strong:    var(--neutral-800);
+  --text-body-inverse:   var(--white);
+  --text-body-muted:     var(--neutral-400);
+  --text-error:          var(--red);
+  --text-warning:        var(--orange-400);
+  --text-success:        var(--green);
+
+  --icon-primary:   var(--neutral-500);
+  --icon-secondary: var(--neutral-700);
+  --icon-muted:     var(--neutral-400);
+  --icon-inverse:   var(--white);
+  --icon-accent:    var(--pink-600);
+  --icon-error:     var(--red);
+  --icon-warning:   var(--orange-400);
+  --icon-success:   var(--green);
+
+  /* Background — screen canvases */
+  --bg-primary: var(--orange-50);   /* the warm cream every screen sits on */
+
+  /* Surface — section fills, shapes, cards */
+  --surface-gray:    var(--neutral-100);
+  --surface-white:   var(--white);
+  --surface-inverse: var(--neutral-800);
+  --surface-scrim-50: rgba(18,18,18,0.50);
+  --surface-scrim-30: rgba(18,18,18,0.30);
+  --surface-veil-50:  rgba(255,255,255,0.50);
+
+  /* Alerts / accents */
+  --accent:             var(--pink-600);
+  --alert-error:        var(--red);
+  --alert-warning:      var(--orange-400);
+  --alert-success:      var(--green);
+  --alert-notification: var(--blue-500);
+
+  /* Borders */
+  --border-primary:   var(--neutral-100);
+  --border-secondary: var(--neutral-200);
+  --border-tertiary:  var(--neutral-400);
+  --border-black:     var(--neutral-800);
+  --border-white:     var(--neutral-50);
+  --border-neutral:   var(--orange-50); /* blends into the cream canvas */
+  --border-error:     var(--red);
+  --border-success:   var(--green);
+
+  /* Interactive — primary action is solid black in-product */
+  --action-primary:        var(--neutral-800);
+  --action-primary-text:   var(--white);
+  --action-secondary:      var(--neutral-100);
+  --action-secondary-text: var(--neutral-800);
+}
+
+/* ---- typography ---- */
+/* ============================================================
+   Sttar — Typography tokens
+   One typeface (Inter). Headings are Semi Bold (600); body is Regular;
+   buttons/labels are Medium. Tight tracking on large headings only.
+   ============================================================ */
+
+:root {
+  /* Font families */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-sans);
+
+  /* Weights */
+  --fw-regular: 400;   /* @kind font */
+  --fw-medium: 500;    /* @kind font */
+  --fw-semibold: 600;  /* @kind font */
+  --fw-bold: 700;      /* @kind font */
+
+  /* ---- Type scale (size / line-height) ---- */
+  --display-1-size: 56px;   --display-1-lh: 56px;   /* hero / footer wordmark */
+  --display-2-size: 40px;   --display-2-lh: 44px;   /* marketing headlines */
+
+  --heading-xl-size: 32px;  --heading-xl-lh: 40px;
+  --heading-l-size:  28px;  --heading-l-lh:  36px;
+  --heading-m-size:  24px;  --heading-m-lh:  30px;
+  --heading-s-size:  20px;  --heading-s-lh:  26px;
+
+  --body-l-size: 16px;      --body-l-lh: 24px;
+  --body-m-size: 14px;      --body-m-lh: 18px;
+  --body-s-size: 12px;      --body-s-lh: 16px;
+
+  --button-size: 16px;      --button-lh: 20px;
+
+  /* Tracking */
+  --tracking-tight: -0.02em; /* large display */
+  --tracking-snug:  -0.01em; /* headings */
+  --tracking-normal: 0em;    /* body */
+}
+
+/* ---- Type utility classes (optional convenience) ---- */
+.t-display-1 { font: var(--fw-bold) var(--display-1-size)/var(--display-1-lh) var(--font-display); letter-spacing: var(--tracking-tight); }
+.t-display-2 { font: var(--fw-bold) var(--display-2-size)/var(--display-2-lh) var(--font-display); letter-spacing: var(--tracking-tight); }
+
+.t-heading-xl { font: var(--fw-semibold) var(--heading-xl-size)/var(--heading-xl-lh) var(--font-sans); letter-spacing: var(--tracking-snug); }
+.t-heading-l  { font: var(--fw-semibold) var(--heading-l-size)/var(--heading-l-lh) var(--font-sans); letter-spacing: var(--tracking-snug); }
+.t-heading-m  { font: var(--fw-semibold) var(--heading-m-size)/var(--heading-m-lh) var(--font-sans); letter-spacing: var(--tracking-snug); }
+.t-heading-s  { font: var(--fw-semibold) var(--heading-s-size)/var(--heading-s-lh) var(--font-sans); }
+
+.t-body-l { font: var(--fw-regular) var(--body-l-size)/var(--body-l-lh) var(--font-sans); }
+.t-body-m { font: var(--fw-regular) var(--body-m-size)/var(--body-m-lh) var(--font-sans); }
+.t-body-s { font: var(--fw-regular) var(--body-s-size)/var(--body-s-lh) var(--font-sans); }
+
+.t-button { font: var(--fw-medium) var(--button-size)/var(--button-lh) var(--font-sans); }
+
+/* ---- spacing ---- */
+/* ============================================================
+   Sttar — Spacing, radii & layout tokens
+   4px base grid. Pills are fully round; cards & inputs use a soft radius.
+   ============================================================ */
+
+:root {
+  /* Spacing scale (4px base) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Corner radii */
+  --radius-xs: 8px;    /* tags, small chips */
+  --radius-sm: 12px;   /* inputs, list rows */
+  --radius-md: 16px;   /* cards, sheets fields */
+  --radius-lg: 24px;   /* large cards */
+  --radius-xl: 32px;   /* bottom sheets, hero cards */
+  --radius-pill: 999px;/* buttons, avatars, segmented tabs */
+
+  /* Control heights */
+  --control-s: 36px;
+  --control-m: 44px;   /* min hit target */
+  --control-l: 56px;   /* primary buttons */
+
+  /* Mobile frame */
+  --screen-w: 390px;
+  --gutter: 20px;      /* default horizontal screen padding */
+}
+
+/* ---- effects ---- */
+/* ============================================================
+   Sttar — Effects: shadows & blur
+   Shadows are soft, diffuse and warm-grey — never hard or black.
+   Blur powers the frosted nav bar and floating surfaces.
+   ============================================================ */
+
+:root {
+  /* ---- Shadow scale ----
+     M  → resting cards
+     L  → raised cards, pickers
+     XL → dialogs, toasts, tags, floating buttons
+     Nav→ bottom navigation bar (casts upward)
+     Visual → strong lift for hero / visual elements only */
+  --shadow-m:
+    0px 1px 2px rgba(145,145,145,0.06),
+    0px 4px 10px rgba(145,145,145,0.08);
+
+  --shadow-l:
+    0px 2px 6px rgba(145,145,145,0.06),
+    0px 12px 24px rgba(145,145,145,0.10);
+
+  --shadow-xl:
+    0px 8px 17px rgba(145,145,145,0.05),
+    0px 31px 31px rgba(145,145,145,0.04),
+    0px 70px 42px rgba(145,145,145,0.03);
+
+  --shadow-nav:
+    0px -2px 10px rgba(120,120,120,0.06),
+    0px -8px 30px rgba(120,120,120,0.08);
+
+  --shadow-visual:
+    0px 10px 30px rgba(18,18,18,0.12),
+    0px 30px 60px rgba(18,18,18,0.10);
+
+  /* ---- Blur ---- */
+  --blur-uniform: 60px;  /* frosted buttons & surfaces (backdrop-filter) */
+  --blur-nav: 20px;      /* progressive blur behind the nav bar */
+}
+
+/* ---- base ---- */
+/* ============================================================
+   Sttar — base reset & document defaults
+   Lightweight; sets the warm canvas + Inter as the page default.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--body-l-size);
+  line-height: var(--body-l-lh);
+  color: var(--text-body-strong);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--fw-semibold);
+  color: var(--text-heading);
+  letter-spacing: var(--tracking-snug);
+}
+
+p { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection { background: var(--pink-200); color: var(--neutral-800); }
+
