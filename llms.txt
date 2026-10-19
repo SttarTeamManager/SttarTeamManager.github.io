@@ -1,0 +1,22 @@
+# Sttar: Social Archive
+
+> Sttar is a free photo-sharing app for iPhone and Android. People post up to five photos a day to a personal calendar, share them with their friends, school, and Greek chapter, collect a stamp for every city they visit, and turn trips into albums. Over time it becomes an archive of their life. Made by Sttar Inc.
+
+Key facts:
+- Name: Sttar: Social Archive (often just "Sttar")
+- Price: free
+- Platforms: iOS (App Store) and Android (Google Play)
+- Age rating: 13+
+- Core features: up to five photos a day; calendar archive with a cover for each day and streaks; city stamps earned by being in a city; trip albums with photos, stamps, and a map; friends' photos newest first with no algorithm; school pages via student email verification; Greek chapter spaces; public or private days and trips
+- Audience: friend groups, college students, Greek life chapters, travelers
+- Contact: hello@sttar.com
+
+## Pages
+- [What is Sttar? Features & FAQ](https://sttar.com/about/): full description of the app, how it works, and frequently asked questions
+- [Home](https://sttar.com/): product overview
+- [Privacy Policy](https://sttar.com/privacy-policy/)
+- [Terms of Service](https://sttar.com/terms-of-service/)
+
+## Download
+- [App Store](https://apps.apple.com/us/app/sttar-social-archive/id6754605970)
+- [Google Play](https://play.google.com/store/apps/details?id=com.sttar)
