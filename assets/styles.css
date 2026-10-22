@@ -6,7 +6,7 @@
    Mark + wordmark are black or white only — never an accent colour.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..800&display=swap');
+/* Inter is loaded with a <link> in each page's <head> (no @import, so it downloads in parallel). */
 
 :root {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,

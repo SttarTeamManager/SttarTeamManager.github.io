@@ -34,7 +34,92 @@
 {"@type":"MobileApplication","@id":"https://sttar.com/#app","name":"Sttar: Social Archive","alternateName":"Sttar","description":"A social archive app where people share up to five photos a day with their friends, school, and Greek chapter, collect location-based city stamps, and build trip albums and a calendar archive of their life.","contentRating":"13+","operatingSystem":"iOS, Android","applicationCategory":"SocialNetworkingApplication","url":"https://sttar.com/","image":"https://sttar.com/assets/icon-512.png","installUrl":["https://apps.apple.com/us/app/sttar-social-archive/id6754605970","https://play.google.com/store/apps/details?id=com.sttar"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://sttar.com/#org"}}
 ]}
 </script>
-<script src="./assets/support.js"></script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-4%20-4%2044%2044'%3E%3Crect%20x='-4'%20y='-4'%20width='44'%20height='44'%20rx='9'%20fill='%23F7F1EA'/%3E%3Cpath%20d='M18%200C18%200%2018.244%206.801%2020.561%2011.274C23.892%207.273%2026.997%202.454%2026.997%202.454C26.997%202.454%2023.944%208.361%2022.154%2013.544C22.165%2013.555%2022.176%2013.566%2022.187%2013.577C26.016%2017.4%2036%2018%2036%2018C36%2018%2026.117%2018.459%2022.287%2022.289C18.457%2026.119%2018%2036%2018%2036C18%2036%2017.669%2029.232%2015.381%2024.731C12.068%2028.768%209.003%2033.535%209.003%2033.535C9.003%2033.535%2012.03%2027.694%2013.874%2022.494C13.813%2022.428%2013.751%2022.363%2013.688%2022.3C9.858%2018.47%200%2018%200%2018C0%2018%209.883%2017.541%2013.713%2013.711C17.543%209.881%2018%200%2018%200Z'%20fill='%23121212'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..800;1,14..32,400..800&amp;display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+html,body{height:100%}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg-primary);font-family:var(--font-sans);color:var(--text-body);-webkit-font-smoothing:antialiased}
+a{color:var(--text-heading);text-decoration:none}
+::selection{background:#FFCBEB}
+.root{position:relative;background:var(--bg-primary);font-family:var(--font-sans);color:var(--text-body);overflow-x:clip}
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,48px);mix-blend-mode:difference;color:#fff}
+.nav-brand{display:flex;align-items:center;gap:10px;color:#fff}
+.nav-brand svg{width:20px;height:20px;display:block}
+.nav-brand span{font-weight:700;font-size:16px;letter-spacing:-0.04em;line-height:1;color:#fff}
+.nav-tag{position:absolute;left:50%;transform:translateX(-50%);text-align:center;font-size:13px;font-weight:500;letter-spacing:0.02em;color:#fff;white-space:nowrap}
+.nav-dl{font-size:14px;font-weight:500;color:#fff;letter-spacing:0.01em}
+.stage{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden}
+.card{position:absolute;left:50%;top:50%;width:150px;margin:-104px 0 0 -75px;background:var(--surface-white);padding:10px 10px 36px;box-shadow:0 14px 34px rgba(18,18,18,0.22);will-change:transform;opacity:0;pointer-events:auto}
+.card-photo{position:relative;aspect-ratio:4/5;background:var(--neutral-100)}
+.card-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.card-meta{position:absolute;left:10px;right:10px;bottom:11px;display:flex;justify-content:space-between;font-size:11px;font-weight:500;line-height:1;color:var(--text-body-muted)}
+.card-meta span+span{color:var(--text-heading)}
+.pin{position:relative}
+.sticky{position:sticky;top:0;height:100dvh;overflow:hidden}
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:0.02em}
+.btn{display:inline-flex;align-items:center;height:52px;background:var(--neutral-800);color:var(--white);font-weight:500;border-radius:8px}
+.hero-text{position:absolute;left:0;right:0;top:0;padding:calc(64px + 7vh) clamp(20px,5vw,64px) 0;text-align:center;z-index:50;pointer-events:none;opacity:0}
+.hero-text h1{margin:0 auto;max-width:1100px;font-weight:700;font-size:clamp(56px,11vw,140px);line-height:0.92;letter-spacing:-0.045em;color:var(--text-heading);text-wrap:balance}
+.hero-sub{margin:22px auto 0;max-width:440px;font-size:clamp(16px,1.3vw,19px);line-height:1.45;color:var(--text-body)}
+.hero-cta{margin-top:28px;display:flex;justify-content:center;pointer-events:auto}
+.hero-cta a{padding:0 26px;font-size:16px;letter-spacing:-0.01em}
+.rating{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:500;color:var(--text-body)}
+.stars{display:inline-flex;gap:1.5px;color:var(--neutral-800)}
+.stars svg{width:12px;height:12px;display:block}
+.scroll-hint{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:12px;font-weight:500;color:var(--text-body-muted);letter-spacing:0.04em}
+.cal{background:var(--surface-inverse)}
+.cal .sticky{background:var(--surface-inverse);color:var(--white)}
+.cal-layout{height:100%;padding:calc(56px + 4vh) clamp(20px,5vw,72px) 5vh;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,64px);align-items:center}
+.cal-text{position:relative;min-height:260px}
+.cal-step{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center}
+.cal-step .eyebrow{color:var(--neutral-300);margin-bottom:18px}
+.cal-step h2{margin:0;font-weight:700;font-size:clamp(40px,5.4vw,76px);line-height:0.98;letter-spacing:-0.035em;color:var(--white);text-wrap:balance}
+.cal-body{margin-top:18px;max-width:380px;font-size:17px;line-height:1.5;color:var(--neutral-300)}
+.cal-count{margin-top:22px;font-size:14px;font-weight:600;color:var(--pink-400);letter-spacing:0.01em}
+.cal-grid{justify-self:center;width:100%;max-width:540px;opacity:0;will-change:transform}
+.cal-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;padding:0 2px}
+.cal-month{font-weight:600;font-size:16px;color:var(--white);letter-spacing:-0.01em}
+.cal-sub{font-size:12px;font-weight:500;color:var(--neutral-300)}
+.cal-dow,.cal-cells{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal-dow{margin-bottom:6px;font-size:11px;font-weight:500;color:var(--neutral-300);text-align:center;letter-spacing:0.04em}
+.cal-cell{position:relative;aspect-ratio:150/208;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14)}
+.cal-cell div{position:absolute;top:5px;left:6px;font-size:10px;font-weight:500;color:var(--neutral-300);line-height:1}
+.feed-text{position:absolute;left:0;right:0;top:0;padding:calc(56px + 6vh) clamp(20px,5vw,64px) 0;opacity:0}
+.feed-text .eyebrow{color:var(--text-body);margin-bottom:16px}
+.feed-text h2{margin:0;font-weight:700;font-size:clamp(52px,10vw,150px);line-height:0.9;letter-spacing:-0.045em;color:var(--text-heading);will-change:transform;white-space:nowrap}
+.feed-body{margin:18px 0 0;max-width:440px;font-size:17px;line-height:1.5;color:var(--text-body)}
+.dl{position:relative;padding:16vh clamp(20px,5vw,64px) 10vh;overflow:hidden}
+.dive-space{height:150vh}
+.dl-text{position:relative;z-index:60;text-align:center;max-width:1000px;margin:0 auto}
+.dl-text .eyebrow{color:var(--text-body);margin-bottom:20px}
+.dl-text h2{margin:0;font-weight:700;font-size:clamp(56px,11vw,150px);line-height:0.9;letter-spacing:-0.045em;color:var(--text-heading);text-wrap:balance}
+.dl-sub{margin:22px auto 0;max-width:420px;font-size:17px;line-height:1.5;color:var(--text-body)}
+.dl-btns{margin-top:32px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.dl-btns a{padding:0 24px;font-size:15px}
+.phone-wrap{display:flex;justify-content:center;margin-top:10vh}
+.phone{width:min(clamp(240px,26vw,300px),100%,42dvh);aspect-ratio:9/19.5;border-radius:38px;background:var(--neutral-800);padding:4px;box-shadow:var(--shadow-visual);flex:none;position:relative}
+.phone-screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--neutral-100)}
+.phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.footer{background:var(--surface-inverse);color:var(--text-body-inverse);padding:72px 0 0;overflow:hidden}
+.footer-cta{display:flex;justify-content:center;padding:0 clamp(20px,5vw,64px) 48px}
+.footer-cta a{display:inline-flex;align-items:center;height:52px;padding:0 30px;background:var(--white);color:var(--neutral-800);font-size:16px;font-weight:500;border-radius:8px;letter-spacing:-0.01em}
+.footer-rule{margin:0 clamp(20px,5vw,64px);border-top:1px solid var(--neutral-700)}
+.footer-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:28px clamp(20px,5vw,64px) 0}
+.footer-tag{font-size:15px;color:var(--neutral-300)}
+.footer-links{display:flex;gap:22px;font-size:13px;font-weight:500;color:var(--neutral-300);flex-wrap:wrap}
+.footer-links a{color:var(--neutral-300)}
+.footer-copy{margin:24px clamp(20px,5vw,64px) 0;font-size:12px;color:var(--neutral-400)}
+.wordmark{display:flex;align-items:flex-start;justify-content:center;gap:0.06em;margin-top:24px;height:0.62em;font-size:clamp(120px,27vw,420px);overflow:hidden;line-height:1}
+.wordmark svg{width:0.72em;height:0.72em;margin-top:0.1em;margin-right:0.04em;display:block;flex:none}
+.wordmark span{display:block;font-weight:700;letter-spacing:-0.05em;line-height:1;color:var(--white);white-space:nowrap}
+@media (max-width:899.98px){.nav-tag{display:none}}
+@media (max-width:719.98px){.cal-body{display:none}.cal-text{min-height:170px}}
+</style>
 </head>
 <body>
 <noscript>
@@ -47,394 +132,372 @@
 <p><a href="/about/">What is Sttar? Features &amp; FAQ</a> &middot; <a href="/privacy-policy/">Privacy Policy</a> &middot; <a href="/terms-of-service/">Terms of Service</a> &middot; <a href="/support/">Support</a></p>
 </main>
 </noscript>
-<x-dc>
-<helmet>
-  <title>Sttar: Social Archive – Daily Photos With Your People</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-4%20-4%2044%2044'%3E%3Crect%20x='-4'%20y='-4'%20width='44'%20height='44'%20rx='9'%20fill='%23F7F1EA'/%3E%3Cpath%20d='M18%200C18%200%2018.244%206.801%2020.561%2011.274C23.892%207.273%2026.997%202.454%2026.997%202.454C26.997%202.454%2023.944%208.361%2022.154%2013.544C22.165%2013.555%2022.176%2013.566%2022.187%2013.577C26.016%2017.4%2036%2018%2036%2018C36%2018%2026.117%2018.459%2022.287%2022.289C18.457%2026.119%2018%2036%2018%2036C18%2036%2017.669%2029.232%2015.381%2024.731C12.068%2028.768%209.003%2033.535%209.003%2033.535C9.003%2033.535%2012.03%2027.694%2013.874%2022.494C13.813%2022.428%2013.751%2022.363%2013.688%2022.3C9.858%2018.47%200%2018%200%2018C0%2018%209.883%2017.541%2013.713%2013.711C17.543%209.881%2018%200%2018%200Z'%20fill='%23121212'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="assets/styles.css">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: auto; }
-    body { margin: 0; background: var(--bg-primary); font-family: var(--font-sans); color: var(--text-body); -webkit-font-smoothing: antialiased; }
-    a { color: var(--text-heading); text-decoration: none; }
-    a:hover { color: var(--accent); }
-    ::selection { background: #FFCBEB; }
-  </style>
-</helmet>
-
-<div ref="{{ rootRef }}" style="position:relative; background:var(--bg-primary); font-family:var(--font-sans); color:var(--text-body); overflow-x:clip;">
+<div class="root" id="root">
 
   <!-- NAV -->
-  <div data-nav="" style="position:fixed; top:0; left:0; right:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px, 4vw, 48px); mix-blend-mode:difference; color:#fff;">
-    <a href="#" style="display:flex; align-items:center; gap:10px; color:#fff;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" style="width:20px; height:20px; display:block;"><path d="M 18 0 C 18 0 18.244 6.801 20.561 11.274 C 23.892 7.273 26.997 2.454 26.997 2.454 C 26.997 2.454 23.944 8.361 22.154 13.544 C 22.165 13.555 22.176 13.566 22.187 13.577 C 26.016 17.4 36 18 36 18 C 36 18 26.117 18.459 22.287 22.289 C 18.457 26.119 18 36 18 36 C 18 36 17.669 29.232 15.381 24.731 C 12.068 28.768 9.003 33.535 9.003 33.535 C 9.003 33.535 12.03 27.694 13.874 22.494 C 13.813 22.428 13.751 22.363 13.688 22.3 C 9.858 18.47 0 18 0 18 C 0 18 9.883 17.541 13.713 13.711 C 17.543 9.881 18 0 18 0 Z" fill="#FFFFFF"></path></svg>
-      <span style="font-weight:700; font-size:16px; letter-spacing:-0.04em; line-height:1; color:#fff;">Sttar: Social Archive</span>
+  <div class="nav" data-nav>
+    <a href="#" class="nav-brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M 18 0 C 18 0 18.244 6.801 20.561 11.274 C 23.892 7.273 26.997 2.454 26.997 2.454 C 26.997 2.454 23.944 8.361 22.154 13.544 C 22.165 13.555 22.176 13.566 22.187 13.577 C 26.016 17.4 36 18 36 18 C 36 18 26.117 18.459 22.287 22.289 C 18.457 26.119 18 36 18 36 C 18 36 17.669 29.232 15.381 24.731 C 12.068 28.768 9.003 33.535 9.003 33.535 C 9.003 33.535 12.03 27.694 13.874 22.494 C 13.813 22.428 13.751 22.363 13.688 22.3 C 9.858 18.47 0 18 0 18 C 0 18 9.883 17.541 13.713 13.711 C 17.543 9.881 18 0 18 0 Z" fill="#FFFFFF"/></svg>
+      <span>Sttar: Social Archive</span>
     </a>
-    <div data-nav-tag="" style="position:absolute; left:50%; transform:translateX(-50%); text-align:center; font-size:13px; font-weight:500; letter-spacing:0.02em; color:#fff; white-space:nowrap;">your groups. your moments. your archive.</div>
-    <a href="https://app.sttar.com" style="font-size:14px; font-weight:500; color:#fff; letter-spacing:0.01em;">download</a>
+    <div class="nav-tag">your groups. your moments. your archive.</div>
+    <a href="https://app.sttar.com" class="nav-dl">download</a>
   </div>
 
-  <!-- ONE CONTINUOUS PHOTO STREAM · lives above every section -->
-  <div data-stage="" style="position:fixed; inset:0; z-index:40; pointer-events:none; overflow:hidden;">
-    <sc-for list="{{ cards }}" as="card" hint-placeholder-count="30">
-      <div data-card="{{ $index }}" style="position:absolute; left:50%; top:50%; width:150px; margin:-104px 0 0 -75px; background:var(--surface-white); padding:10px 10px 36px; box-shadow:0 14px 34px rgba(18,18,18,0.22); will-change:transform; opacity:0; pointer-events:auto;">
-        <div style="position:relative; aspect-ratio:4/5; background:var(--neutral-100);">
-          <img src="{{ card.src }}" alt="" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
-        </div>
-        <div style="position:absolute; left:10px; right:10px; bottom:11px; display:flex; justify-content:space-between; font-size:11px; font-weight:500; line-height:1; color:var(--text-body-muted);">
-          <span>sep {{ card.day }}</span><span style="color:var(--text-heading);">{{ card.handle }}</span>
-        </div>
-      </div>
-    </sc-for>
+  <!-- PHOTO STREAM (positioned by the script below) -->
+  <div class="stage" aria-hidden="true">
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(1).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 1</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(2).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 2</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(3).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 3</span><span>@maya.k</span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(4).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 4</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(5).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 5</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(6).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 6</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(7).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 7</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(8).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 8</span><span>@jules</span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(9).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 9</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(10).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 10</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(11).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 11</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(12).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 12</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(13).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 13</span><span>@soph.e</span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(14).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 14</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(15).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 15</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(16).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 16</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(17).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 17</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(18).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 18</span><span>@nat</span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(19).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 19</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(20).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 20</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(21).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 21</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(22).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 22</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(23).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 23</span><span>@ren.b</span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(24).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 24</span><span></span></div></div>
+    <div class="card" data-card><div class="card-photo"><img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(25).jpg" alt="" loading="lazy"></div><div class="card-meta"><span>sep 25</span><span></span></div></div>
   </div>
 
   <!-- 1 · HERO -->
-  <section data-screen-label="hero" data-pin="hero" style="position:relative; height:220vh;">
-    <div style="position:sticky; top:0; height:100dvh; overflow:hidden;">
-      <div data-hero-text="" style="position:absolute; left:0; right:0; top:0; padding:calc(64px + 7vh) clamp(20px, 5vw, 64px) 0; text-align:center; z-index:50; pointer-events:none; opacity:0;">
-        <h1 style="margin:0 auto; max-width:1100px; font-weight:700; font-size:clamp(56px, 11vw, 140px); line-height:0.92; letter-spacing:-0.045em; color:var(--text-heading); text-wrap:balance;">five shots<br>a day.</h1>
-        <div style="margin:22px auto 0; max-width:440px; font-size:clamp(16px, 1.3vw, 19px); line-height:1.45; color:var(--text-body);">up to five photos a day with your people. it quietly becomes the archive of your life.</div>
-        <div style="margin-top:28px; display:flex; justify-content:center; pointer-events:auto;">
-          <a data-cta="" href="https://app.sttar.com" style="display:inline-flex; align-items:center; height:52px; padding:0 26px; background:var(--neutral-800); color:var(--white); font-size:16px; font-weight:500; border-radius:8px; letter-spacing:-0.01em;">download the app</a>
+  <section class="pin" data-pin="hero" style="height:544vh">
+    <div class="sticky">
+      <div class="hero-text" data-hero-text>
+        <h1>five shots<br>a day.</h1>
+        <div class="hero-sub">up to five photos a day with your people. it quietly becomes the archive of your life.</div>
+        <div class="hero-cta">
+          <a class="btn" href="https://app.sttar.com">download the app</a>
         </div>
-        <div style="margin-top:14px; display:flex; align-items:center; justify-content:center; gap:6px; font-size:11px; font-weight:500; color:var(--text-body);">
-          <span style="display:inline-flex; gap:1.5px; color:var(--neutral-800);" aria-label="4.8 out of 5 stars">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:12px; height:12px; display:block;"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:12px; height:12px; display:block;"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:12px; height:12px; display:block;"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:12px; height:12px; display:block;"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:12px; height:12px; display:block;"><defs><linearGradient id="star48"><stop offset="80%" stop-color="currentColor"></stop><stop offset="80%" stop-color="currentColor" stop-opacity="0.25"></stop></linearGradient></defs><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="url(#star48)"></path></svg>
+        <div class="rating">
+          <span class="stars" aria-label="4.8 out of 5 stars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><linearGradient id="star48"><stop offset="80%" stop-color="currentColor"/><stop offset="80%" stop-color="currentColor" stop-opacity="0.25"/></linearGradient></defs><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.1 4.56 16.7l.94-5.5-4-3.9 5.53-.8z" fill="url(#star48)"/></svg>
           </span>
           <span>4.8 on the App Store</span>
         </div>
       </div>
-      <div style="position:absolute; left:0; right:0; bottom:22px; text-align:center; font-size:12px; font-weight:500; color:var(--text-body-muted); letter-spacing:0.04em;">scroll</div>
+      <div class="scroll-hint">scroll</div>
     </div>
   </section>
 
-  <!-- 2 · DAILY SHOT → CALENDAR (black centerpiece) -->
-  <section data-screen-label="calendar" data-pin="cal" style="position:relative; height:480vh; background:var(--surface-inverse);">
-    <div data-cal-inner="" style="position:sticky; top:0; height:100dvh; overflow:hidden; background:var(--surface-inverse); color:var(--white);">
-      <div style="height:100%; padding:calc(56px + 4vh) clamp(20px, 5vw, 72px) 5vh; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap:clamp(24px, 4vw, 64px); align-items:center;">
-        <div data-cal-text="" style="position:relative; min-height:260px;">
-          <div data-cal-h1="" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;">
-            <div style="font-size:13px; font-weight:500; letter-spacing:0.02em; color:var(--neutral-300); margin-bottom:18px;">01 · the daily shots</div>
-            <h2 style="margin:0; font-weight:700; font-size:clamp(40px, 5.4vw, 76px); line-height:0.98; letter-spacing:-0.035em; color:var(--white); text-wrap:balance;">up to five photos. every day. that's it.</h2>
-            <div data-cal-body="" style="margin-top:18px; max-width:380px; font-size:17px; line-height:1.5; color:var(--neutral-300);">low effort. no captions to agonize over. just the moments that were today.</div>
+  <!-- 2 · DAILY SHOTS → CALENDAR -->
+  <section class="pin cal" data-pin="cal" style="height:1120vh">
+    <div class="sticky" data-cal-inner>
+      <div class="cal-layout">
+        <div class="cal-text">
+          <div class="cal-step" data-cal-h1>
+            <div class="eyebrow">01 · the daily shots</div>
+            <h2>up to five photos. every day. that's it.</h2>
+            <div class="cal-body">low effort. no captions to agonize over. just the moments that were today.</div>
           </div>
-          <div data-cal-h2="" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; opacity:0;">
-            <div style="font-size:13px; font-weight:500; letter-spacing:0.02em; color:var(--neutral-300); margin-bottom:18px;">02 · the archive</div>
-            <h2 style="margin:0; font-weight:700; font-size:clamp(40px, 5.4vw, 76px); line-height:0.98; letter-spacing:-0.035em; color:var(--white); text-wrap:balance;">watch your year fill in.</h2>
-            <div data-cal-body="" style="margin-top:18px; max-width:380px; font-size:17px; line-height:1.5; color:var(--neutral-300);">each day gets a cover. a month becomes a semester. a semester becomes the whole thing.</div>
-            <div data-cal-count="" style="margin-top:22px; font-size:14px; font-weight:600; color:var(--pink-400); letter-spacing:0.01em;">0 / 30 days</div>
+          <div class="cal-step" data-cal-h2 style="opacity:0">
+            <div class="eyebrow">02 · the archive</div>
+            <h2>watch your year fill in.</h2>
+            <div class="cal-body">each day gets a cover. a month becomes a semester. a semester becomes the whole thing.</div>
+            <div class="cal-count" data-cal-count>0 / 30 days</div>
           </div>
         </div>
-        <div data-cal-grid="" style="justify-self:center; width:100%; max-width:540px; opacity:0; will-change:transform;">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; padding:0 2px;">
-            <div style="font-weight:600; font-size:16px; color:var(--white); letter-spacing:-0.01em;">september</div>
-            <div style="font-size:12px; font-weight:500; color:var(--neutral-300);">your month</div>
+        <div class="cal-grid" data-cal-grid>
+          <div class="cal-head">
+            <div class="cal-month">september</div>
+            <div class="cal-sub">your month</div>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:6px; margin-bottom:6px; font-size:11px; font-weight:500; color:var(--neutral-300); text-align:center; letter-spacing:0.04em;">
+          <div class="cal-dow">
             <div>s</div><div>m</div><div>t</div><div>w</div><div>t</div><div>f</div><div>s</div>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:6px;">
-            <sc-for list="{{ cells }}" as="cell" hint-placeholder-count="30">
-              <div data-cal-cell="{{ cell.n }}" style="position:relative; aspect-ratio:150/208; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14);">
-                <div style="position:absolute; top:5px; left:6px; font-size:10px; font-weight:500; color:var(--neutral-300); line-height:1;">{{ cell.n }}</div>
-              </div>
-            </sc-for>
+          <div class="cal-cells">
+            <div class="cal-cell" data-cal-cell="1"><div>1</div></div>
+            <div class="cal-cell" data-cal-cell="2"><div>2</div></div>
+            <div class="cal-cell" data-cal-cell="3"><div>3</div></div>
+            <div class="cal-cell" data-cal-cell="4"><div>4</div></div>
+            <div class="cal-cell" data-cal-cell="5"><div>5</div></div>
+            <div class="cal-cell" data-cal-cell="6"><div>6</div></div>
+            <div class="cal-cell" data-cal-cell="7"><div>7</div></div>
+            <div class="cal-cell" data-cal-cell="8"><div>8</div></div>
+            <div class="cal-cell" data-cal-cell="9"><div>9</div></div>
+            <div class="cal-cell" data-cal-cell="10"><div>10</div></div>
+            <div class="cal-cell" data-cal-cell="11"><div>11</div></div>
+            <div class="cal-cell" data-cal-cell="12"><div>12</div></div>
+            <div class="cal-cell" data-cal-cell="13"><div>13</div></div>
+            <div class="cal-cell" data-cal-cell="14"><div>14</div></div>
+            <div class="cal-cell" data-cal-cell="15"><div>15</div></div>
+            <div class="cal-cell" data-cal-cell="16"><div>16</div></div>
+            <div class="cal-cell" data-cal-cell="17"><div>17</div></div>
+            <div class="cal-cell" data-cal-cell="18"><div>18</div></div>
+            <div class="cal-cell" data-cal-cell="19"><div>19</div></div>
+            <div class="cal-cell" data-cal-cell="20"><div>20</div></div>
+            <div class="cal-cell" data-cal-cell="21"><div>21</div></div>
+            <div class="cal-cell" data-cal-cell="22"><div>22</div></div>
+            <div class="cal-cell" data-cal-cell="23"><div>23</div></div>
+            <div class="cal-cell" data-cal-cell="24"><div>24</div></div>
+            <div class="cal-cell" data-cal-cell="25"><div>25</div></div>
+            <div class="cal-cell" data-cal-cell="26"><div>26</div></div>
+            <div class="cal-cell" data-cal-cell="27"><div>27</div></div>
+            <div class="cal-cell" data-cal-cell="28"><div>28</div></div>
+            <div class="cal-cell" data-cal-cell="29"><div>29</div></div>
+            <div class="cal-cell" data-cal-cell="30"><div>30</div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · YOUR PEOPLE · stack, then the whole stream sweeps across -->
-  <section data-screen-label="people" data-pin="feed" style="position:relative; height:220vh;">
-    <div style="position:sticky; top:0; height:100dvh; overflow:hidden;">
-      <div data-feed-text="" style="position:absolute; left:0; right:0; top:0; padding:calc(56px + 6vh) clamp(20px, 5vw, 64px) 0; opacity:0;">
-        <div style="font-size:13px; font-weight:500; letter-spacing:0.02em; color:var(--text-body); margin-bottom:16px;">03 · your people</div>
-        <h2 data-feed-title="" style="margin:0; font-weight:700; font-size:clamp(52px, 10vw, 150px); line-height:0.9; letter-spacing:-0.045em; color:var(--text-heading); will-change:transform; white-space:nowrap;">your people,<br>first.</h2>
-        <div style="margin:18px 0 0; max-width:440px; font-size:17px; line-height:1.5; color:var(--text-body);">your friends' shots, newest first. no algorithm deciding who you see. your friend group, your campus circle. that's who it's for. nobody else needs to see it.</div>
+  <!-- 3 · YOUR PEOPLE -->
+  <section class="pin" data-pin="feed" style="height:608vh">
+    <div class="sticky">
+      <div class="feed-text" data-feed-text>
+        <div class="eyebrow">03 · your people</div>
+        <h2 data-feed-title>your people,<br>first.</h2>
+        <div class="feed-body">your friends' shots, newest first. no algorithm deciding who you see. your friend group, your campus circle. that's who it's for. nobody else needs to see it.</div>
       </div>
     </div>
   </section>
 
-  <!-- 5 · DOWNLOAD · the stream pours into the phone -->
-  <section id="download" data-screen-label="download" data-download="" style="position:relative; padding:16vh clamp(20px, 5vw, 64px) 10vh; overflow:hidden;">
-    <div data-dive-space="" style="height:150vh;"></div>
-    <div data-dl-text="" style="position:relative; z-index:60; text-align:center; max-width:1000px; margin:0 auto;">
-      <div data-reveal="" data-reveal-i="0" style="font-size:13px; font-weight:500; letter-spacing:0.02em; color:var(--text-body); margin-bottom:20px;">free. on ios and android.</div>
-      <h2 data-reveal="" data-reveal-i="1" style="margin:0; font-weight:700; font-size:clamp(56px, 11vw, 150px); line-height:0.9; letter-spacing:-0.045em; color:var(--text-heading); text-wrap:balance;">start your archive.</h2>
-      <div data-reveal="" data-reveal-i="2" style="margin:22px auto 0; max-width:420px; font-size:17px; line-height:1.5; color:var(--text-body);">a few photos a day. your people. it starts today or it starts tomorrow. either way, it starts.</div>
-      <div data-reveal="" data-reveal-i="3" style="margin-top:32px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-        <a href="https://apps.apple.com/us/app/sttar-social-archive/id6754605970" style="display:inline-flex; align-items:center; height:52px; padding:0 24px; background:var(--neutral-800); color:var(--white); font-size:15px; font-weight:500; border-radius:8px;">app store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.sttar" style="display:inline-flex; align-items:center; height:52px; padding:0 24px; background:var(--neutral-800); color:var(--white); font-size:15px; font-weight:500; border-radius:8px;">google play</a>
+  <!-- 4 · DOWNLOAD · the stream pours into the phone -->
+  <section id="download" class="dl">
+    <div class="dive-space"></div>
+    <div class="dl-text" data-dl-text>
+      <div class="eyebrow" data-reveal="0">free. on ios and android.</div>
+      <h2 data-reveal="1">start your archive.</h2>
+      <div class="dl-sub" data-reveal="2">a few photos a day. your people. it starts today or it starts tomorrow. either way, it starts.</div>
+      <div class="dl-btns" data-reveal="3">
+        <a class="btn" href="https://apps.apple.com/us/app/sttar-social-archive/id6754605970">app store</a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.sttar">google play</a>
       </div>
     </div>
-    <div style="display:flex; justify-content:center; margin-top:10vh;">
-      <div data-phone="" data-reveal="" data-reveal-i="2" style="width:min(clamp(240px, 26vw, 300px), 100%, 42dvh); aspect-ratio:9/19.5; border-radius:38px; background:var(--neutral-800); padding:4px; box-shadow:var(--shadow-visual); flex:none; position:relative;">
-        <div data-phone-screen="" style="position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:var(--neutral-100);">
-          <img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/app-ui.png" alt="Sttar app" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+    <div class="phone-wrap">
+      <div class="phone" data-reveal="2">
+        <div class="phone-screen" data-phone-screen>
+          <img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/app-ui.png" alt="Sttar app">
         </div>
       </div>
     </div>
   </section>
 
-  <template id="__bundler_thumbnail">
-    <div style="width:100%;height:100%;display:flex;flex-direction:column;gap:4%;align-items:center;justify-content:center;background:#F7F1EA;color:#121212;font-family:sans-serif;font-weight:700;font-size:30%;letter-spacing:-0.04em;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" style="width:26%;height:26%;display:block;"><path d="M 18 0 C 18 0 18.244 6.801 20.561 11.274 C 23.892 7.273 26.997 2.454 26.997 2.454 C 26.997 2.454 23.944 8.361 22.154 13.544 C 22.165 13.555 22.176 13.566 22.187 13.577 C 26.016 17.4 36 18 36 18 C 36 18 26.117 18.459 22.287 22.289 C 18.457 26.119 18 36 18 36 C 18 36 17.669 29.232 15.381 24.731 C 12.068 28.768 9.003 33.535 9.003 33.535 C 9.003 33.535 12.03 27.694 13.874 22.494 C 13.813 22.428 13.751 22.363 13.688 22.3 C 9.858 18.47 0 18 0 18 C 0 18 9.883 17.541 13.713 13.711 C 17.543 9.881 18 0 18 0 Z" fill="#121212"></path></svg>
-      <span>Sttar</span>
-    </div>
-  </template>
-
   <!-- FOOTER -->
-  <footer style="background:var(--surface-inverse); color:var(--text-body-inverse); padding:72px 0 0; overflow:hidden;">
-    <div style="display:flex; justify-content:center; padding:0 clamp(20px, 5vw, 64px) 48px;">
-      <a href="https://app.sttar.com" style="display:inline-flex; align-items:center; height:52px; padding:0 30px; background:var(--white); color:var(--neutral-800); font-size:16px; font-weight:500; border-radius:8px; letter-spacing:-0.01em;">download now</a>
+  <footer class="footer">
+    <div class="footer-cta">
+      <a href="https://app.sttar.com">download now</a>
     </div>
-    <div style="margin:0 clamp(20px, 5vw, 64px); border-top:1px solid var(--neutral-700);"></div>
-    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; padding:28px clamp(20px, 5vw, 64px) 0;">
-      <div style="font-size:15px; color:var(--neutral-300);">your groups. your moments. your archive.</div>
-      <div style="display:flex; gap:22px; font-size:13px; font-weight:500; color:var(--neutral-300); flex-wrap:wrap;">
-        <a href="https://www.instagram.com/the.sttar" target="_blank" rel="noopener" style="color:var(--neutral-300);">instagram</a>
-        <a href="https://sttar.com/privacy-policy" style="color:var(--neutral-300);">privacy</a>
-        <a href="https://sttar.com/terms-of-service" style="color:var(--neutral-300);">terms</a>
-        <a href="https://sttar.com/support/" style="color:var(--neutral-300);">support</a>
+    <div class="footer-rule"></div>
+    <div class="footer-row">
+      <div class="footer-tag">your groups. your moments. your archive.</div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/the.sttar" target="_blank" rel="noopener">instagram</a>
+        <a href="https://sttar.com/privacy-policy">privacy</a>
+        <a href="https://sttar.com/terms-of-service">terms</a>
+        <a href="https://sttar.com/support/">support</a>
       </div>
     </div>
-    <div style="margin:24px clamp(20px, 5vw, 64px) 0; font-size:12px; color:var(--neutral-400);">© 2026 sttar. made for your people.</div>
-    <div style="display:flex; align-items:flex-start; justify-content:center; gap:0.06em; margin-top:24px; height:0.62em; font-size:clamp(120px, 27vw, 420px); overflow:hidden; line-height:1;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" style="width:0.72em; height:0.72em; margin-top:0.1em; margin-right:0.04em; display:block; flex:none;"><path d="M 18 0 C 18 0 18.244 6.801 20.561 11.274 C 23.892 7.273 26.997 2.454 26.997 2.454 C 26.997 2.454 23.944 8.361 22.154 13.544 C 22.165 13.555 22.176 13.566 22.187 13.577 C 26.016 17.4 36 18 36 18 C 36 18 26.117 18.459 22.287 22.289 C 18.457 26.119 18 36 18 36 C 18 36 17.669 29.232 15.381 24.731 C 12.068 28.768 9.003 33.535 9.003 33.535 C 9.003 33.535 12.03 27.694 13.874 22.494 C 13.813 22.428 13.751 22.363 13.688 22.3 C 9.858 18.47 0 18 0 18 C 0 18 9.883 17.541 13.713 13.711 C 17.543 9.881 18 0 18 0 Z" fill="#FFFFFF"></path></svg>
-      <span style="display:block; font-weight:700; letter-spacing:-0.05em; line-height:1; color:var(--white); white-space:nowrap;">Sttar</span>
+    <div class="footer-copy">© 2026 sttar. made for your people.</div>
+    <div class="wordmark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M 18 0 C 18 0 18.244 6.801 20.561 11.274 C 23.892 7.273 26.997 2.454 26.997 2.454 C 26.997 2.454 23.944 8.361 22.154 13.544 C 22.165 13.555 22.176 13.566 22.187 13.577 C 26.016 17.4 36 18 36 18 C 36 18 26.117 18.459 22.287 22.289 C 18.457 26.119 18 36 18 36 C 18 36 17.669 29.232 15.381 24.731 C 12.068 28.768 9.003 33.535 9.003 33.535 C 9.003 33.535 12.03 27.694 13.874 22.494 C 13.813 22.428 13.751 22.363 13.688 22.3 C 9.858 18.47 0 18 0 18 C 0 18 9.883 17.541 13.713 13.711 C 17.543 9.881 18 0 18 0 Z" fill="#FFFFFF"/></svg>
+      <span>Sttar</span>
     </div>
   </footer>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;photos&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:25,&quot;min&quot;:10,&quot;max&quot;:31,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;calendar&quot;},&quot;scrollLength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.6,&quot;min&quot;:0.6,&quot;max&quot;:1.6,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;motion&quot;},&quot;ctaStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;black&quot;,&quot;pink&quot;],&quot;default&quot;:&quot;black&quot;,&quot;tsType&quot;:&quot;'black' | 'pink'&quot;,&quot;section&quot;:&quot;buttons&quot;}}">
-class Component extends DCLogic {
-  rootRef = React.createRef();
-  m = {
-    clamp: (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)),
-    range: (p, a, b) => Math.max(0, Math.min(1, (p - a) / (b - a))),
-    lerp: (a, b, t) => a + (b - a) * t,
-    eo: t => 1 - Math.pow(1 - t, 3),
-    ei: t => t * t * t,
-    eio: t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
-    frac: x => x - Math.floor(x),
-  };
-  days() { return this.m.clamp(Math.round(Number(this.props.photos ?? 25)), 10, 31); }
-  feedIdx(N) { return [0.08, 0.3, 0.5, 0.7, 0.9].map(f => Math.round(f * (N - 1))); }
-  // one cover photo per day (up to 5 can be posted; the calendar shows the day's cover)
-  plan(N) { return Array.from({ length: N }, (_, i) => ({ day: i + 1, k: 0, cnt: 1 })); }
-  renderVals() {
-    const N = this.days(), fi = this.feedIdx(N), handles = ['@maya.k', '@jules', '@soph.e', '@nat', '@ren.b'], plan = this.plan(N);
-    return {
-      rootRef: this.rootRef,
-      goDownload: e => {
-        if (e && e.preventDefault) e.preventDefault();
-        const el = this.rootRef.current?.querySelector('[data-download]');
-        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 40, behavior: 'smooth' });
-      },
-      cards: Array.from({ length: N }, (_, i) => ({ n: i + 1, day: plan[i].day, src: `https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(${i + 1}).jpg`, handle: fi.indexOf(i) >= 0 ? handles[fi.indexOf(i)] : '' })),
-      cells: Array.from({ length: 30 }, (_, i) => ({ n: i + 1 })),
-    };
-  }
-  componentDidMount() {
-    this.rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    this.t0 = performance.now(); this.lastY = -1; this.needMeasure = true;
-    this.onScroll = () => { this.dirty = true; };
-    this.onResize = () => { this.needMeasure = true; };
-    window.addEventListener('scroll', this.onScroll, { passive: true });
-    window.addEventListener('resize', this.onResize);
-    this.timers = [800, 2500, 5000].map(t => setTimeout(() => { this.needMeasure = true; }, t));
-    const tick = now => {
-      this.raf = requestAnimationFrame(tick);
-      if (this.needMeasure) this.measure();
-      const intro = now - this.t0 < 2600;
-      if (!this.dirty && !intro && this.lastY === window.scrollY) return;
-      this.dirty = false; this.lastY = window.scrollY;
-      try { this.frame(now); } catch (e) { console.warn(e); }
-    };
-    this.raf = requestAnimationFrame(tick);
-  }
-  componentDidUpdate() { this.needMeasure = true; }
-  componentWillUnmount() {
-    cancelAnimationFrame(this.raf);
-    window.removeEventListener('scroll', this.onScroll);
-    window.removeEventListener('resize', this.onResize);
-    (this.timers || []).forEach(clearTimeout);
-  }
-  measure() {
-    const root = this.rootRef.current; if (!root) return;
-    this.needMeasure = false;
-    const q = s => root.querySelector(s), qa = s => Array.from(root.querySelectorAll(s));
-    const vw = this.vw = window.innerWidth, vh = this.vh = window.innerHeight;
-    const sl = Number(this.props.scrollLength ?? 1) * (this.rm ? 0.45 : 1);
-    const secs = { hero: q('[data-pin="hero"]'), cal: q('[data-pin="cal"]'), feed: q('[data-pin="feed"]') };
-    const H = { hero: 340, cal: 700, feed: 380 };
-    Object.keys(secs).forEach(k => { if (secs[k]) secs[k].style.height = (H[k] * sl) + 'vh'; });
-    const top = el => el.getBoundingClientRect().top + window.scrollY;
-    const K = { ...secs };
-    Object.keys(secs).forEach(k => { const el = secs[k]; if (!el) return; K[k + 'Top'] = top(el); K[k + 'Len'] = Math.max(1, el.offsetHeight - vh); K[k + 'End'] = K[k + 'Top'] + K[k + 'Len']; });
-    const ps = q('[data-phone-screen]');
-    const maxY = Math.max(0, document.documentElement.scrollHeight - vh);
+<script>
+/* Scroll-driven photo stream. Plain JS, no dependencies. */
+(function () {
+  var root = document.getElementById('root');
+  var SCROLL_LENGTH = 1.6;
+  var clamp = function (v, a, b) { a = a === undefined ? 0 : a; b = b === undefined ? 1 : b; return Math.max(a, Math.min(b, v)); };
+  var range = function (p, a, b) { return Math.max(0, Math.min(1, (p - a) / (b - a))); };
+  var lerp = function (a, b, t) { return a + (b - a) * t; };
+  var eo = function (t) { return 1 - Math.pow(1 - t, 3); };
+  var ei = function (t) { return t * t * t; };
+  var eio = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+  var frac = function (x) { return x - Math.floor(x); };
+  var q = function (s) { return root.querySelector(s); };
+  var qa = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
+  var feedIdx = function (N) { return [0.08, 0.3, 0.5, 0.7, 0.9].map(function (f) { return Math.round(f * (N - 1)); }); };
+
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var t0 = performance.now(), lastY = -1, needMeasure = true, dirty = false;
+  var vw, vh, mobile, K, H, F, cal, nav, cardEls, reveals, phoneScreen;
+
+  function measure() {
+    needMeasure = false;
+    vw = window.innerWidth; vh = window.innerHeight;
+    var sl = SCROLL_LENGTH * (rm ? 0.45 : 1);
+    var secs = { hero: q('[data-pin="hero"]'), cal: q('[data-pin="cal"]'), feed: q('[data-pin="feed"]') };
+    var HT = { hero: 340, cal: 700, feed: 380 };
+    var top = function (el) { return el.getBoundingClientRect().top + window.scrollY; };
+    K = {};
+    Object.keys(secs).forEach(function (k) {
+      var el = secs[k]; K[k] = el; if (!el) return;
+      el.style.height = (HT[k] * sl) + 'vh';
+    });
+    Object.keys(secs).forEach(function (k) {
+      var el = secs[k]; if (!el) return;
+      K[k + 'Top'] = top(el); K[k + 'Len'] = Math.max(1, el.offsetHeight - vh); K[k + 'End'] = K[k + 'Top'] + K[k + 'Len'];
+    });
+    var ps = q('[data-phone-screen]');
+    var maxY = Math.max(0, document.documentElement.scrollHeight - vh);
     K.phoneY = ps ? Math.min(maxY, top(ps) + ps.offsetHeight * 0.35 - vh * 0.45) : (K.feedEnd || 0) + vh;
-    // the dive starts once the download text has scrolled past the middle, so the cards never cross it
-    const dt = q('[data-dl-text]');
+    var dt = q('[data-dl-text]');
     K.diveStart = Math.min(K.phoneY - vh * 0.6, (K.feedEnd || 0) + vh * 0.2);
     K.textEnd = dt ? top(dt) + dt.offsetHeight : K.diveStart;
-    this.K = K;
-    this.nav = q('[data-nav]');
-    const mobile = this.mobile = vw < 720;
-    const tag = q('[data-nav-tag]'); if (tag) tag.style.display = vw < 900 ? 'none' : '';
-    qa('[data-cal-body]').forEach(el => { el.style.display = mobile ? 'none' : ''; });
-    const ct = q('[data-cal-text]'); if (ct) ct.style.minHeight = mobile ? '170px' : '260px';
-    qa('[data-cta]').forEach(el => { el.style.background = this.props.ctaStyle === 'pink' ? 'var(--pink-600)' : 'var(--neutral-800)'; });
-    this.cardEls = qa('[data-card]').sort((a, b) => +a.dataset.card - +b.dataset.card);
-    // hero pose base
-    const ht = q('[data-hero-text]');
-    { const tb = ht ? ht.offsetTop + ht.offsetHeight : vh * 0.5, room = Math.max(120, vh - tb - 40);
-      // shrink the fan on short viewports so it fits between the text block and the bottom edge; never pull it up over the CTA
-      const s = this.m.clamp(Math.min(vw / 760, room / 300, (vh - tb - 40) / 208), 0.45, 1) * 1.33;
-      const y = tb + 24 + 104 * s - vh / 2;
-      this.H = { text: ht, s, spread: Math.min(150, vw * 0.11) * s * 0.78, y, minY: y }; }
+    nav = q('[data-nav]');
+    mobile = vw < 720;
+    cardEls = qa('[data-card]');
+    // hero fan
+    var ht = q('[data-hero-text]');
+    var tb = ht ? ht.offsetTop + ht.offsetHeight : vh * 0.5, room = Math.max(120, vh - tb - 40);
+    var s = clamp(Math.min(vw / 760, room / 300, (vh - tb - 40) / 208), 0.45, 1) * 1.33;
+    var y = tb + 24 + 104 * s - vh / 2;
+    H = { text: ht, s: s, spread: Math.min(150, vw * 0.11) * s * 0.78, y: y, minY: y };
     // calendar targets
-    const inner = q('[data-cal-inner]'), grid = q('[data-cal-grid]');
-    const cells = {}; qa('[data-cal-cell]').forEach(c => { cells[c.dataset.calCell] = c; });
-    const targets = []; let gc = { x: 0, y: 0 };
+    var inner = q('[data-cal-inner]'), grid = q('[data-cal-grid]');
+    var cells = {}; qa('[data-cal-cell]').forEach(function (c) { cells[c.getAttribute('data-cal-cell')] = c; });
+    var targets = [], gc = { x: 0, y: 0 };
     if (inner) {
-      const prev = grid ? grid.style.transform : ''; if (grid) grid.style.transform = 'none';
-      const ir = inner.getBoundingClientRect(), cx = ir.left + ir.width / 2, cy = ir.top + ir.height / 2;
-      if (grid) { const gr = grid.getBoundingClientRect(); gc = { x: gr.left + gr.width / 2 - cx, y: gr.top + gr.height / 2 - cy }; }
-      const plan = this.plan(this.cardEls.length);
-      this.cardEls.forEach((_, i) => {
-        const p = plan[i], cell = cells[p.day]; if (!cell || !cell.offsetWidth) { targets.push(null); return; }
-        const cr = cell.getBoundingClientRect(), c = p.k - (p.cnt - 1) / 2;
-        targets.push({ x: cr.left + cr.width / 2 - cx + c * 3, y: cr.top + cr.height / 2 - cy + c * 2.5, r: c * 5, s: cr.width / 150, day: p.day, k: p.k });
+      var prev = grid ? grid.style.transform : ''; if (grid) grid.style.transform = 'none';
+      var ir = inner.getBoundingClientRect(), cx = ir.left + ir.width / 2, cy = ir.top + ir.height / 2;
+      if (grid) { var gr = grid.getBoundingClientRect(); gc = { x: gr.left + gr.width / 2 - cx, y: gr.top + gr.height / 2 - cy }; }
+      cardEls.forEach(function (_, i) {
+        var cell = cells[i + 1]; if (!cell || !cell.offsetWidth) { targets.push(null); return; }
+        var cr = cell.getBoundingClientRect();
+        targets.push({ x: cr.left + cr.width / 2 - cx, y: cr.top + cr.height / 2 - cy, r: 0, s: cr.width / 150 });
       });
       if (grid) grid.style.transform = prev;
     }
-    this.cal = { targets, gc, h1: q('[data-cal-h1]'), h2: q('[data-cal-h2]'), grid, count: q('[data-cal-count]'), sScatter: Math.min(1, vw / 700) };
-    // feed
-    const ft = q('[data-feed-text]');
-    { const tb = ft ? ft.offsetTop + ft.offsetHeight : vh * 0.5, room = Math.max(120, vh - tb - 40);
-      const s = this.m.clamp(Math.min(vw / (mobile ? 560 : 760), room / 270), 0.45, 1) * 1.13;
-      const spread = mobile ? (vw - 150 * s - 32) / 4 : Math.min(130, vw * 0.1) * s * 0.85;
-      this.F = { text: ft, title: q('[data-feed-title]'), s, spread, rot: mobile ? 3 : 7, y: tb + 28 + 104 * s - vh / 2 }; }
-    this.reveals = qa('[data-reveal]');
-    this.phoneScreen = ps;
-    const N = this.days();
-    if (this.cardEls.length !== N || targets.some(t => !t)) setTimeout(() => { this.needMeasure = true; }, 120);
-    this.lastY = -1; this.dirty = true;
+    cal = { targets: targets, gc: gc, h1: q('[data-cal-h1]'), h2: q('[data-cal-h2]'), grid: grid, count: q('[data-cal-count]'), sScatter: Math.min(1, vw / 700) };
+    // feed stack
+    var ft = q('[data-feed-text]');
+    tb = ft ? ft.offsetTop + ft.offsetHeight : vh * 0.5; room = Math.max(120, vh - tb - 40);
+    s = clamp(Math.min(vw / (mobile ? 560 : 760), room / 270), 0.45, 1) * 1.13;
+    var spread = mobile ? (vw - 150 * s - 32) / 4 : Math.min(130, vw * 0.1) * s * 0.85;
+    F = { text: ft, title: q('[data-feed-title]'), s: s, spread: spread, rot: mobile ? 3 : 7, y: tb + 28 + 104 * s - vh / 2 };
+    reveals = qa('[data-reveal]');
+    phoneScreen = ps;
+    lastY = -1; dirty = true;
   }
-  frame(now) {
-    const { clamp, range, lerp, eo, ei, eio, frac } = this.m;
-    const K = this.K; if (!K || !K.hero) return;
-    const vh = this.vh, vw = this.vw, y = window.scrollY, N = this.cardEls.length;
-    const pin = el => { const r = el.getBoundingClientRect(); return { p: clamp(-r.top / Math.max(1, r.height - vh)), pre: clamp(1 - r.top / vh), r }; };
-    const T = (el, tr, op) => { el.style.transform = tr; if (op !== undefined) el.style.opacity = String(op); };
-    const mix = (P, Q, t, lift) => t <= 0 ? P : t >= 1 ? Q : ({ x: lerp(P.x, Q.x, t), y: lerp(P.y, Q.y, t) - Math.sin(t * Math.PI) * lift, r: lerp(P.r, Q.r, t), s: lerp(P.s, Q.s, t), o: lerp(P.o, Q.o, t) });
-    const off = (i, side) => ({ x: side * (vw / 2 + 280), y: (((i * 37) % 100) - 50) / 100 * vh * 0.8, r: side * 18, s: 1, o: 1 });
 
-    if (this.nav) this.nav.style.opacity = '1';
+  function pin(el) { var r = el.getBoundingClientRect(); return { p: clamp(-r.top / Math.max(1, r.height - vh)), pre: clamp(1 - r.top / vh), r: r }; }
+  function T(el, tr, op) { el.style.transform = tr; if (op !== undefined) el.style.opacity = String(op); }
+  function mix(P, Q, t, lift) {
+    if (t <= 0) return P; if (t >= 1) return Q;
+    return { x: lerp(P.x, Q.x, t), y: lerp(P.y, Q.y, t) - Math.sin(t * Math.PI) * lift, r: lerp(P.r, Q.r, t), s: lerp(P.s, Q.s, t), o: lerp(P.o, Q.o, t) };
+  }
+  function off(i, side) { return { x: side * (vw / 2 + 280), y: (((i * 37) % 100) - 50) / 100 * vh * 0.8, r: side * 18, s: 1, o: 1 }; }
 
-    // HERO text
-    const hp = pin(K.hero).p;
-    if (this.H.text) {
-      const intro = eo(clamp((now - this.t0) / 700));
-      const out = ei(range(y, K.calTop - 1.3 * vh, K.calTop - 0.75 * vh));
-      T(this.H.text, `translateY(${((1 - intro) * 24 - out * 40).toFixed(1)}px)`, intro * (1 - out));
+  var SPREAD_M = [[-0.34, 0.4, -10], [0.34, 0.4, 9], [0, 0.44, 3]];
+  var SPREAD_D = [[-0.40, -0.22, -12], [-0.37, 0.2, 8], [0.40, -0.2, 10], [0.37, 0.22, -7], [-0.2, 0.38, 6], [0.2, 0.36, -9], [0, 0.44, 4]];
+
+  function frame(now) {
+    if (!K || !K.hero) return;
+    var y = window.scrollY, N = cardEls.length;
+    if (nav) nav.style.opacity = '1';
+
+    var hp = pin(K.hero).p;
+    if (H.text) {
+      var intro = eo(clamp((now - t0) / 700));
+      var out = ei(range(y, K.calTop - 1.3 * vh, K.calTop - 0.75 * vh));
+      T(H.text, 'translateY(' + ((1 - intro) * 24 - out * 40).toFixed(1) + 'px)', intro * (1 - out));
     }
 
-    // CALENDAR text + grid
-    const cp = pin(K.cal), en = eo(cp.pre);
-    const swap = range(cp.p, 0.16, 0.26), show = range(cp.p, 0.2, 0.32);
-    if (this.cal.h1) T(this.cal.h1, `translateY(${(-swap * 30 + (1 - en) * 40).toFixed(1)}px)`, (1 - swap) * en);
-    if (this.cal.h2) T(this.cal.h2, `translateY(${((1 - show) * 30).toFixed(1)}px)`, show);
-    if (this.cal.grid) T(this.cal.grid, `scale(${(0.96 + 0.04 * eo(show)).toFixed(4)})`, eo(show));
+    var cp = pin(K.cal), en = eo(cp.pre);
+    var swap = range(cp.p, 0.16, 0.26), show = range(cp.p, 0.2, 0.32);
+    if (cal.h1) T(cal.h1, 'translateY(' + (-swap * 30 + (1 - en) * 40).toFixed(1) + 'px)', (1 - swap) * en);
+    if (cal.h2) T(cal.h2, 'translateY(' + ((1 - show) * 30).toFixed(1) + 'px)', show);
+    if (cal.grid) T(cal.grid, 'scale(' + (0.96 + 0.04 * eo(show)).toFixed(4) + ')', eo(show));
 
-    // FEED text · slides in from the right edge
-    const fp = pin(K.feed);
-    // one progress that spans the approach + most of the pinned length, so a longer
-    // section actually slows the whole gather instead of adding dead scroll
-    const feedProg = range(y, K.feedTop - 1.3 * vh, K.feedTop + 0.88 * K.feedLen);
-    if (this.F.text) {
-      const e = eo(range(feedProg, 0.12, 0.6));
-      T(this.F.text, 'none', e);
-      if (this.F.title) T(this.F.title, `translateX(${((1 - e) * vw * 0.4).toFixed(1)}px)`);
+    var fp = pin(K.feed);
+    var feedProg = range(y, K.feedTop - 1.3 * vh, K.feedTop + 0.88 * K.feedLen);
+    if (F.text) {
+      var e = eo(range(feedProg, 0.12, 0.6));
+      T(F.text, 'none', e);
+      if (F.title) T(F.title, 'translateX(' + ((1 - e) * vw * 0.4).toFixed(1) + 'px)');
     }
 
-    // REVEALS
-    this.reveals.forEach(el => {
-      const i = +(el.dataset.revealI || 0), top = el.getBoundingClientRect().top;
-      const e = eo(range(clamp((vh * 0.92 - top) / (vh * 0.32)), i * 0.1, 0.55 + i * 0.1));
-      T(el, `translateY(${((1 - e) * 36).toFixed(1)}px)`, e);
+    reveals.forEach(function (el) {
+      var i = +(el.getAttribute('data-reveal') || 0), t = el.getBoundingClientRect().top;
+      var e2 = eo(range(clamp((vh * 0.92 - t) / (vh * 0.32)), i * 0.1, 0.55 + i * 0.1));
+      T(el, 'translateY(' + ((1 - e2) * 36).toFixed(1) + 'px)', e2);
     });
 
-    // THE STREAM
-    const fi = this.feedIdx(N), pr = this.phoneScreen ? this.phoneScreen.getBoundingClientRect() : null;
-    const phonePose = pr ? { x: pr.left + pr.width / 2 - vw / 2, y: pr.top + pr.height / 2 - vh / 2, r: 0, s: pr.width / 150, o: 1 } : { x: 0, y: vh, r: 0, s: 1, o: 1 };
-    const v = range(y, K.diveStart, K.phoneY);
-    const drift = eio(range(fp.p, 0.3, 0.95)) * 60;
-    let landed = 0;
-    const SPREAD = this.mobile
-      ? [[-0.34, 0.4, -10], [0.34, 0.4, 9], [0, 0.44, 3]]
-      : [[-0.40, -0.22, -12], [-0.37, 0.2, 8], [0.40, -0.2, 10], [0.37, 0.22, -7], [-0.2, 0.38, 6], [0.2, 0.36, -9], [0, 0.44, 4]];
-    const HN = SPREAD.length;
-    this.cardEls.forEach((el, i) => {
-      const u = i / N, side = i % 2 ? -1 : 1;
-      // hero · spread around the headline (entering from outside), gather into a fan on scroll
-      let P;
+    var fi = feedIdx(N), pr = phoneScreen ? phoneScreen.getBoundingClientRect() : null;
+    var phonePose = pr ? { x: pr.left + pr.width / 2 - vw / 2, y: pr.top + pr.height / 2 - vh / 2, r: 0, s: pr.width / 150, o: 1 } : { x: 0, y: vh, r: 0, s: 1, o: 1 };
+    var v = range(y, K.diveStart, K.phoneY);
+    var drift = eio(range(fp.p, 0.3, 0.95)) * 60;
+    var landed = 0;
+    var SPREAD = mobile ? SPREAD_M : SPREAD_D, HN = SPREAD.length;
+    cardEls.forEach(function (el, i) {
+      var u = i / N, side = i % 2 ? -1 : 1, P;
       if (i < HN) {
-        const c = i - (HN - 1) / 2, H = this.H, sp = SPREAD[i];
-        const intro = eo(clamp((now - this.t0 - 150 - i * 90) / 900));
-        const far = 1 + (1 - intro) * 1.4;
-        // bottom-row cards (4 to 6) never sit above the CTA: at least the fan's y (just below the text block)
-        const minY = sp[1] > 0.3 ? H.minY + (this.mobile ? 0 : 20) : -vh;
-        const sy = Math.max(sp[1] * vh, minY);
-        const S0 = { x: sp[0] * vw * far, y: sy * far + (1 - intro) * vh * 0.2, r: sp[2] * far, s: H.s, o: intro };
-        const yv = H.y + c * c * 7 - 28 * eio(range(hp, 0.5, 0.95)) * (0.6 + (i % 3) * 0.35);
-        const FAN = { x: c * H.spread * (this.mobile ? 1.6 : 1), y: yv, r: c * 6, s: H.s, o: 1 };
+        var c = i - (HN - 1) / 2, sp = SPREAD[i];
+        var intro2 = eo(clamp((now - t0 - 150 - i * 90) / 900));
+        var far = 1 + (1 - intro2) * 1.4;
+        var minY = sp[1] > 0.3 ? H.minY + (mobile ? 0 : 20) : -vh;
+        var sy = Math.max(sp[1] * vh, minY);
+        var S0 = { x: sp[0] * vw * far, y: sy * far + (1 - intro2) * vh * 0.2, r: sp[2] * far, s: H.s, o: intro2 };
+        var yv = H.y + c * c * 7 - 28 * eio(range(hp, 0.5, 0.95)) * (0.6 + (i % 3) * 0.35);
+        var FAN = { x: c * H.spread * (mobile ? 1.6 : 1), y: yv, r: c * 6, s: H.s, o: 1 };
         P = mix(S0, FAN, eio(range(hp, 0.04 + i * 0.03, 0.5 + i * 0.03)), 24);
       } else P = off(i, side);
-      // scatter (into the black)
-      const ang = i * 2.39996, rad = 0.25 + 0.75 * frac(i * 0.618034);
-      const SC = { x: this.cal.gc.x + Math.cos(ang) * rad * Math.min(vw * 0.36, 420), y: this.cal.gc.y + Math.sin(ang) * rad * vh * 0.42, r: ((i * 47) % 25) - 12, s: this.cal.sScatter, o: 1 };
-      const tA = eio(range(y, K.calTop - 1.4 * vh + u * 0.3 * vh, K.calTop + 0.2 * K.calLen + u * 0.3 * vh));
+      var ang = i * 2.39996, rad = 0.25 + 0.75 * frac(i * 0.618034);
+      var SC = { x: cal.gc.x + Math.cos(ang) * rad * Math.min(vw * 0.36, 420), y: cal.gc.y + Math.sin(ang) * rad * vh * 0.42, r: ((i * 47) % 25) - 12, s: cal.sScatter, o: 1 };
+      var tA = eio(range(y, K.calTop - 1.4 * vh + u * 0.3 * vh, K.calTop + 0.2 * K.calLen + u * 0.3 * vh));
       P = mix(P, SC, tA, 40);
-      // grid
-      const t = this.cal.targets[i], G = t ? { x: t.x, y: t.y, r: t.r, s: t.s, o: 1 } : SC;
-      const tB = eio(range(cp.p, 0.24 + u * 0.45, 0.4 + u * 0.45));
+      var t = cal.targets[i], G = t ? { x: t.x, y: t.y, r: t.r, s: t.s, o: 1 } : SC;
+      var tB = eio(range(cp.p, 0.24 + u * 0.45, 0.4 + u * 0.45));
       P = mix(P, G, tB, 60);
-      // feed stack (5) · everyone else exits through the sides
-      const k = fi.indexOf(i);
-      let FD;
-      if (k >= 0) { const c = k - 2; FD = { x: c * this.F.spread, y: this.F.y + c * c * (this.mobile ? 4 : 10) - drift * (0.4 + (k % 3) * 0.4), r: c * this.F.rot, s: this.F.s, o: 1 }; }
+      var k = fi.indexOf(i), FD;
+      if (k >= 0) { var c2 = k - 2; FD = { x: c2 * F.spread, y: F.y + c2 * c2 * (mobile ? 4 : 10) - drift * (0.4 + (k % 3) * 0.4), r: c2 * F.rot, s: F.s, o: 1 }; }
       else FD = off(i, side);
-      const tC = eio(range(feedProg, 0.0 + u * 0.28, 0.5 + u * 0.28));
+      var tC = eio(range(feedProg, 0.0 + u * 0.28, 0.5 + u * 0.28));
       P = mix(P, FD, tC, 80);
-      // leaving the people section: the stack stays put and slides down with the page until the dive
-      const hold = fp.p >= 0.999 ? K.feedEnd - y : 0;
-      P = { ...P, y: P.y + hold };
-      // into the phone · only the 5 stack cards dive in, one at a time (newest first),
-      // each one lingering ~55% of the run so it reads slowly. all others just fade out.
-      let tE = 0;
-      if (k >= 0) { const ord = (4 - k) / 5; tE = eio(range(v, ord * 0.45, ord * 0.45 + 0.55)); }
+      var hold = fp.p >= 0.999 ? K.feedEnd - y : 0;
+      P = { x: P.x, y: P.y + hold, r: P.r, s: P.s, o: P.o };
+      var tE = 0;
+      if (k >= 0) { var ord = (4 - k) / 5; tE = eio(range(v, ord * 0.45, ord * 0.45 + 0.55)); }
       P = mix(P, phonePose, tE, 40);
-      let o = P.o * (1 - range(tE, 0.7, 0.95));
+      var o = P.o * (1 - range(tE, 0.7, 0.95));
       if (k < 0) o *= (1 - eo(range(v, 0, 0.35)));
       if (tB >= 0.999 && tC <= 0.001) landed++;
-      let z = 10 + i;
+      var z = 10 + i;
       if (tB > 0 && tB < 1) z = 300;
       if (k >= 0 && tC > 0.5 && tE < 0.5) z = 100 + (k === 2 ? 5 : k);
       if (tE > 0) z = 400 + i;
       el.style.zIndex = String(z);
-      T(el, `translate(${P.x.toFixed(1)}px, ${P.y.toFixed(1)}px) rotate(${P.r.toFixed(2)}deg) scale(${P.s.toFixed(4)})`, o);
+      T(el, 'translate(' + P.x.toFixed(1) + 'px, ' + P.y.toFixed(1) + 'px) rotate(' + P.r.toFixed(2) + 'deg) scale(' + P.s.toFixed(4) + ')', o);
     });
-    if (this.cal.count) this.cal.count.textContent = `${landed} / 30 days`;
+    if (cal.count) cal.count.textContent = landed + ' / 30 days';
   }
-}
+
+  window.addEventListener('scroll', function () { dirty = true; }, { passive: true });
+  window.addEventListener('resize', function () { needMeasure = true; });
+  [800, 2500, 5000].forEach(function (t) { setTimeout(function () { needMeasure = true; }, t); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { needMeasure = true; });
+  window.addEventListener('load', function () { needMeasure = true; });
+  function tick(now) {
+    requestAnimationFrame(tick);
+    if (needMeasure) measure();
+    var intro = now - t0 < 2600;
+    if (!dirty && !intro && lastY === window.scrollY) return;
+    dirty = false; lastY = window.scrollY;
+    try { frame(now); } catch (err) { console.warn(err); }
+  }
+  requestAnimationFrame(tick);
+})();
 </script>
 </body>
 </html>
