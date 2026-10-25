@@ -102,6 +102,14 @@ a{color:var(--text-heading);text-decoration:none}
 .dl-btns{margin-top:32px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .dl-btns a{padding:0 24px;font-size:15px}
 .phone-wrap{display:flex;justify-content:center;margin-top:10vh}
+@media (min-width:720px){
+.dl-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:clamp(32px,5vw,96px);max-width:1240px;margin:0 auto}
+.dl-row .dl-text{text-align:left;margin:0}
+.dl-row .dl-text h2{font-size:clamp(48px,7.2vw,124px)}
+.dl-row .dl-sub{margin-left:0}
+.dl-row .dl-btns{justify-content:flex-start}
+.dl-row .phone-wrap{margin-top:0}
+}
 .phone{width:min(clamp(240px,26vw,300px),100%,42dvh);aspect-ratio:9/19.5;border-radius:38px;background:var(--neutral-800);padding:4px;box-shadow:var(--shadow-visual);flex:none;position:relative}
 .phone-screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--neutral-100)}
 .phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -117,6 +125,11 @@ a{color:var(--text-heading);text-decoration:none}
 .wordmark{display:flex;align-items:flex-start;justify-content:center;gap:0.06em;margin-top:24px;height:0.62em;font-size:clamp(120px,27vw,420px);overflow:hidden;line-height:1}
 .wordmark svg{width:0.72em;height:0.72em;margin-top:0.1em;margin-right:0.04em;display:block;flex:none}
 .wordmark span{display:block;font-weight:700;letter-spacing:-0.05em;line-height:1;color:var(--white);white-space:nowrap}
+/* Lenis smooth scroll */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth iframe{pointer-events:none}
+/* GSAP SplitText line masks; padding keeps descenders from being clipped */
+.ln-mask{padding-bottom:0.12em;margin-bottom:-0.12em}
 @media (max-width:899.98px){.nav-tag{display:none}}
 @media (max-width:719.98px){.cal-body{display:none}.cal-text{min-height:170px}}
 </style>
@@ -203,12 +216,10 @@ a{color:var(--text-heading);text-decoration:none}
       <div class="cal-layout">
         <div class="cal-text">
           <div class="cal-step" data-cal-h1>
-            <div class="eyebrow">01 · the daily shots</div>
             <h2>up to five photos. every day. that's it.</h2>
             <div class="cal-body">low effort. no captions to agonize over. just the moments that were today.</div>
           </div>
           <div class="cal-step" data-cal-h2 style="opacity:0">
-            <div class="eyebrow">02 · the archive</div>
             <h2>watch your year fill in.</h2>
             <div class="cal-body">each day gets a cover. a month becomes a semester. a semester becomes the whole thing.</div>
             <div class="cal-count" data-cal-count>0 / 30 days</div>
@@ -263,7 +274,6 @@ a{color:var(--text-heading);text-decoration:none}
   <section class="pin" data-pin="feed" style="height:608vh">
     <div class="sticky">
       <div class="feed-text" data-feed-text>
-        <div class="eyebrow">03 · your people</div>
         <h2 data-feed-title>your people,<br>first.</h2>
         <div class="feed-body">your friends' shots, newest first. no algorithm deciding who you see. your friend group, your campus circle. that's who it's for. nobody else needs to see it.</div>
       </div>
@@ -273,19 +283,21 @@ a{color:var(--text-heading);text-decoration:none}
   <!-- 4 · DOWNLOAD · the stream pours into the phone -->
   <section id="download" class="dl">
     <div class="dive-space"></div>
-    <div class="dl-text" data-dl-text>
-      <div class="eyebrow" data-reveal="0">free. on ios and android.</div>
-      <h2 data-reveal="1">start your archive.</h2>
-      <div class="dl-sub" data-reveal="2">a few photos a day. your people. it starts today or it starts tomorrow. either way, it starts.</div>
-      <div class="dl-btns" data-reveal="3">
-        <a class="btn" href="https://apps.apple.com/us/app/sttar-social-archive/id6754605970">app store</a>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.sttar">google play</a>
+    <div class="dl-row">
+      <div class="dl-text" data-dl-text>
+        <div class="eyebrow" data-reveal="0">free. on ios and android.</div>
+        <h2 data-reveal="1">start your archive.</h2>
+        <div class="dl-sub" data-reveal="2">a few photos a day. your people. it starts today or it starts tomorrow. either way, it starts.</div>
+        <div class="dl-btns" data-reveal="3">
+          <a class="btn" href="https://apps.apple.com/us/app/sttar-social-archive/id6754605970">app store</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.sttar">google play</a>
+        </div>
       </div>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone" data-reveal="2">
-        <div class="phone-screen" data-phone-screen>
-          <img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/app-ui.png" alt="Sttar app">
+      <div class="phone-wrap">
+        <div class="phone" data-reveal="2">
+          <div class="phone-screen" data-phone-screen>
+            <img src="https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/app-ui.png" alt="Sttar app">
+          </div>
         </div>
       </div>
     </div>
@@ -313,8 +325,13 @@ a{color:var(--text-heading);text-decoration:none}
     </div>
   </footer>
 </div>
+<!-- Self-hosted, version-pinned, checked against the npm registry hashes -->
+<script src="/assets/vendor/lenis-1.3.27.min.js"></script>
+<script src="/assets/vendor/gsap-3.15.0.min.js"></script>
+<script src="/assets/vendor/ScrollTrigger-3.15.0.min.js"></script>
+<script src="/assets/vendor/SplitText-3.15.0.min.js"></script>
 <script>
-/* Scroll-driven photo stream. Plain JS, no dependencies. */
+/* Scroll-driven photo stream. Smooth scroll via Lenis when available. */
 (function () {
   var root = document.getElementById('root');
   var SCROLL_LENGTH = 1.6;
@@ -330,6 +347,12 @@ a{color:var(--text-heading);text-decoration:none}
   var feedIdx = function (N) { return [0.08, 0.3, 0.5, 0.7, 0.9].map(function (f) { return Math.round(f * (N - 1)); }); };
 
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // The page is a scroll-driven story, so a refresh starts it from the top (unless a #link was followed)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (!location.hash) window.scrollTo(0, 0);
+  // Lenis eases the real window scroll, so everything below that reads scrollY just gets smoother input.
+  // It is stepped from tick() so the frame always renders the freshly eased position.
+  var lenis = !rm && window.Lenis ? new Lenis({ autoRaf: false, anchors: true, lerp: 0.085, wheelMultiplier: 0.9 }) : null;
   var t0 = performance.now(), lastY = -1, needMeasure = true, dirty = false;
   var vw, vh, mobile, K, H, F, cal, nav, cardEls, reveals, phoneScreen;
 
@@ -430,7 +453,8 @@ a{color:var(--text-heading);text-decoration:none}
 
     reveals.forEach(function (el) {
       var i = +(el.getAttribute('data-reveal') || 0), t = el.getBoundingClientRect().top;
-      var e2 = eo(range(clamp((vh * 0.92 - t) / (vh * 0.32)), i * 0.1, 0.55 + i * 0.1));
+      // phones get a shorter, earlier window so the download headline is readable sooner
+      var e2 = eo(range(clamp((vh * (mobile ? 1 : 0.92) - t) / (vh * (mobile ? 0.22 : 0.32))), i * 0.1, 0.55 + i * 0.1));
       T(el, 'translateY(' + ((1 - e2) * 36).toFixed(1) + 'px)', e2);
     });
 
@@ -490,6 +514,7 @@ a{color:var(--text-heading);text-decoration:none}
   window.addEventListener('load', function () { needMeasure = true; });
   function tick(now) {
     requestAnimationFrame(tick);
+    if (lenis) lenis.raf(now);
     if (needMeasure) measure();
     var intro = now - t0 < 2600;
     if (!dirty && !intro && lastY === window.scrollY) return;
@@ -497,6 +522,68 @@ a{color:var(--text-heading);text-decoration:none}
     try { frame(now); } catch (err) { console.warn(err); }
   }
   requestAnimationFrame(tick);
+})();
+</script>
+<script>
+/* Headline reveals: each line rises out of its own mask. GSAP + ScrollTrigger + SplitText. */
+(function () {
+  if (!window.gsap || !window.ScrollTrigger || !window.SplitText) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  // ScrollTrigger restores history.scrollRestoration on refresh, so keep "start from the top" through its own API
+  ScrollTrigger.clearScrollMemory('manual');
+  var root = document.getElementById('root');
+  var q = function (s) { return root.querySelector(s); };
+  var EASE = 'expo.out';
+
+  // autoSplit re-splits on resize / font load; returning the tween lets SplitText carry its progress over
+  function lines(el, vars) {
+    if (!el) return;
+    SplitText.create(el, {
+      type: 'lines', mask: 'lines', linesClass: 'ln', autoSplit: true,
+      onSplit: function (self) {
+        return gsap.from(self.lines, Object.assign({ yPercent: 115, rotate: 2.5, duration: 1.15, ease: EASE, stagger: 0.09 }, vars));
+      }
+    });
+  }
+  var onScroll = function (trigger, start) {
+    return { trigger: trigger, start: start, toggleActions: 'play none none reverse' };
+  };
+
+  // hero: plays on load, alongside the card fan-in
+  lines(q('[data-hero-text] h1'), { delay: 0.12, duration: 1.3, stagger: 0.12 });
+
+  // calendar: step 1 as the section arrives, step 2 at the point the script cross-fades to it (~18% through the pin)
+  var cal = q('[data-pin="cal"]');
+  lines(q('[data-cal-h1] h2'), { scrollTrigger: onScroll(cal, 'top 65%') });
+  lines(q('[data-cal-h2] h2'), {
+    scrollTrigger: onScroll(cal, function () { return 'top+=' + Math.round((cal.offsetHeight - innerHeight) * 0.18) + ' top'; })
+  });
+
+  // download headline
+  var dlH = q('[data-dl-text] h2');
+  lines(dlH, { scrollTrigger: onScroll(dlH, function () { return innerWidth < 720 ? 'top bottom' : 'top 88%'; }) });
+
+  // footer wordmark: star pops in, name rises from below the clip line
+  var wm = q('.wordmark'), footer = q('.footer');
+  if (wm) {
+    var star = wm.querySelector('svg');
+    // the wordmark sits at the very bottom of the page, so key off the footer arriving instead
+    gsap.timeline({ scrollTrigger: onScroll(footer, 'top 75%') })
+      .from(wm.querySelector('span'), { yPercent: 100, duration: 1.4, ease: EASE })
+      .from(star, { scale: 0.3, opacity: 0, duration: 1.4, ease: EASE }, 0.1);
+    // the star turns with the scroll (clockwise going down, back going up) and lands upright at the very bottom
+    var STAR_DEG_PER_PX = 0.12;
+    var turn = gsap.quickTo(star, 'rotation', { duration: 0.9, ease: 'power3.out' });
+    var starST = ScrollTrigger.create({
+      trigger: footer, start: 'top bottom', end: 'max',
+      onUpdate: function (self) { turn((self.scroll() - self.end) * STAR_DEG_PER_PX); }
+    });
+    gsap.set(star, { rotation: (starST.scroll() - starST.end) * STAR_DEG_PER_PX });
+  }
+
+  // the photo-stream script sets the pinned section heights; re-measure once everything has settled
+  window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 })();
 </script>
 </body>
