@@ -280,7 +280,7 @@
     <div class="split">
       <div class="rv">
         <h2>get your link.</h2>
-        <p class="sub">we email it to you within 15 minutes</p>
+        <p class="sub">we email it to you within 10 minutes</p>
       </div>
       <div class="panel rv">
         <form id="signup" novalidate>
@@ -295,7 +295,7 @@
         </form>
         <div class="done" id="done" hidden>
           <h3>you're in.</h3>
-          <p>check your email within 15 minutes (and spam).</p>
+          <p>check your email within 10 minutes (and spam).</p>
         </div>
       </div>
     </div>
@@ -507,7 +507,7 @@
     if (!u) { box.hidden = true; return; }
     if (!data) { box.innerHTML = '<p class="empty">still loading. try again in a second.</p>'; return; }
     var r = (data.referrers || []).filter(function (x) { return x.u.toLowerCase() === u; })[0];
-    if (!r) { box.innerHTML = '<p class="found no">no @' + esc(u) + ' yet</p><p class="empty">just signed up? you\'ll show up within 15 minutes.</p>'; return; }
+    if (!r) { box.innerHTML = '<p class="found no">no @' + esc(u) + ' yet</p><p class="empty">just signed up? you\'ll show up within 10 minutes.</p>'; return; }
     var n = r.verified, goal = n < 10 ? 10 : n < 20 ? 20 : Math.ceil((n + 1) / 10) * 10;
     var to = n < 10 ? (10 - n) + " more until $15" : n < 20 ? (20 - n) + " more to $30" : "+$2 for each friend after this";
     var shown = Math.min(n, goal), start = goal - 10, slots = "";
