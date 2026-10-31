@@ -55,6 +55,15 @@
   .btn:hover { background:var(--ink-2); }
   .btn:active { background:#000; transform:scale(.98); }
   .btn:disabled { background:var(--ink-2); cursor:default; }
+  .btn--line { background:transparent; color:var(--ink); border:1.5px solid var(--ink); }
+  .btn--line:hover { background:var(--cream-2); }
+  .btn--line:active { background:var(--cream-2); }
+  .btn--sm { height:40px; padding:0 16px; font-size:14px; }
+  .facts { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+  .facts li { font-size:clamp(20px, 2vw, 24px); font-weight:500; letter-spacing:-0.02em; color:var(--body); }
+  .facts b { color:var(--ink); font-weight:700; }
+  .sub { margin:14px 0 0; font-size:16px; color:var(--body); }
+  .dark .sub { color:var(--on-dark); }
   .btn--invert { background:#fff; color:var(--ink); }
   .btn--invert:hover { background:var(--cream); }
 
@@ -88,6 +97,7 @@
   /* how it counts */
   .counts { list-style:none; margin:0; padding:0; display:grid; gap:20px; }
   .counts li { padding:4px 0 18px; }
+  .counts span { display:block; margin-top:4px; font-size:16px; color:var(--body); }
   .counts b { display:block; font-size:24px; font-weight:700; letter-spacing:-0.02em; line-height:1.2; }
   .counts p { margin:6px 0 0; color:var(--body); font-size:16px; }
 
@@ -198,17 +208,22 @@
     <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 0C18 0 18.244 6.801 20.561 11.274C23.892 7.273 26.997 2.454 26.997 2.454C26.997 2.454 23.944 8.361 22.154 13.544C22.165 13.555 22.176 13.566 22.187 13.577C26.016 17.4 36 18 36 18C36 18 26.117 18.459 22.287 22.289C18.457 26.119 18 36 18 36C18 36 17.669 29.232 15.381 24.731C12.068 28.768 9.003 33.535 9.003 33.535C9.003 33.535 12.03 27.694 13.874 22.494C13.813 22.428 13.751 22.363 13.688 22.3C9.858 18.47 0 18 0 18C0 18 9.883 17.541 13.713 13.711C17.543 9.881 18 0 18 0Z" fill="currentColor"/></svg>
     Sttar: Social Archive
   </a>
-  <a class="navlink" href="#progress">my progress</a>
+  <a class="btn btn--line btn--sm" href="#progress">my progress</a>
 </nav>
 
 <header class="hero">
   <h1>bring friends.<br>get paid.</h1>
   <div class="hero-copy">
-    <p class="lead">happy halloween. get 10 friends on sttar by nov 15 and we'll send you cash: $1.50 a friend, $2 a friend after 20. no limit.</p>
+    <ul class="facts">
+      <li><b>$1.50</b> a friend</li>
+      <li><b>$2</b> a friend after 20</li>
+      <li><b>10 friends</b> to cash out</li>
+    </ul>
     <div class="hero-cta">
       <a class="btn" href="#join">get my link</a>
-      <span class="left" id="left">joins close nov 15</span>
+      <a class="btn btn--line" href="#progress">my progress</a>
     </div>
+    <p class="left" id="left" style="margin:16px 0 0">joins close nov 15</p>
   </div>
   <div class="stage" aria-hidden="true"><div class="stack" id="stack"></div></div>
 </header>
@@ -218,12 +233,11 @@
     <div class="split">
       <div class="rv">
         <h2>how a friend counts.</h2>
-        <p class="lead">we check it automatically, every hour. a friend counts once all three are true.</p>
       </div>
       <ol class="counts">
-        <li class="rv"><b>they join from your link</b><p>a new sttar account made from your link. friends who already have sttar don't count.</p></li>
-        <li class="rv"><b>you follow each other</b><p>they follow you, and you follow them back.</p></li>
-        <li class="rv"><b>they post three days in a row</b><p>a sttar of the day three days running, on their own clock. joins close nov 15, streaks by nov 18.</p></li>
+        <li class="rv"><b>they join from your link</b><span>new accounts only</span></li>
+        <li class="rv"><b>you follow each other</b><span>follow them back</span></li>
+        <li class="rv"><b>they post 3 days in a row</b><span>sttar of the day</span></li>
       </ol>
     </div>
   </section>
@@ -232,7 +246,7 @@
     <div class="frame">
       <div class="rv" style="max-width:720px">
         <h2>what you make.</h2>
-        <p class="lead" style="margin-top:20px">$1.50 a friend up to 20, then $2 for every friend after. pays out from 10 friends, once, by nov 20.</p>
+        <p class="sub">paid once, by nov 20</p>
       </div>
       <div class="tiers" style="margin-top:clamp(40px, 6vw, 72px)">
         <div class="tier rv"><div class="n">$15</div><div class="f">10 friends</div></div>
@@ -247,7 +261,7 @@
     <div class="split">
       <div class="rv">
         <h2>get your link.</h2>
-        <p class="lead">you need a sttar account. we'll email your link to the address on it within the hour. venmo or zelle is how we pay you.</p>
+        <p class="sub">we email it to you within the hour</p>
       </div>
       <div class="panel rv">
         <form id="signup" novalidate>
@@ -255,14 +269,14 @@
           <input id="f-user" name="user" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next" required>
           <label for="f-name">first name</label>
           <input id="f-name" name="name" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" required>
-          <label for="f-pay">venmo or zelle <small>@venmo, or zelle phone or email</small></label>
-          <input id="f-pay" name="pay" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="send" required>
+          <label for="f-pay">venmo or zelle</label>
+          <input id="f-pay" name="pay" placeholder="@venmo or zelle phone/email" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="send" required>
           <p class="msg" id="f-err" hidden>fill in all three.</p>
           <button class="btn" type="submit" id="f-btn">get my link</button>
         </form>
         <div class="done" id="done" hidden>
           <h3>you're in.</h3>
-          <p>your link is on its way to the email on your sttar account. it lands within the hour, so check spam too.</p>
+          <p>check your email within the hour (and spam).</p>
         </div>
       </div>
     </div>
@@ -271,8 +285,7 @@
   <section class="frame" id="progress" style="padding-top:0">
     <div class="split">
       <div class="rv">
-        <h2>check your progress.</h2>
-        <p class="lead">your username shows every friend so far. it updates every hour.</p>
+        <h2>my progress.</h2>
         <div class="panel" style="margin-top:28px">
           <form class="lookup" id="lookup">
             <input id="l-user" placeholder="username" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="sttar username">
@@ -295,18 +308,18 @@
     <div class="split">
       <div class="rv"><h2>questions.</h2></div>
       <div class="faq">
-        <details class="rv"><summary>when do i get paid?</summary><p>totals lock nov 18, once the last streaks finish. you get one payment by venmo or zelle by nov 20.</p></details>
-        <details class="rv"><summary>my friend joined but doesn't show up.</summary><p>give it an hour. then check they used your link, made a new account, and followed you, and that you followed them back. they count after three days in a row.</p></details>
-        <details class="rv"><summary>does a friend who already has sttar count?</summary><p>no. only new accounts made from your link.</p></details>
-        <details class="rv"><summary>can the friends i bring get their own link?</summary><p>yes. anyone with a sttar account can sign up above.</p></details>
-        <details class="rv"><summary>is there a limit?</summary><p>no. $1.50 a friend up to 20, then $2 for every friend after that.</p></details>
-        <details class="rv"><summary>something looks wrong.</summary><p>email <a href="mailto:hello@sttar.com?subject=Halloween%20link">hello@sttar.com</a> with your username and we'll look.</p></details>
+        <details class="rv"><summary>when do i get paid?</summary><p>once, by nov 20.</p></details>
+        <details class="rv"><summary>my friend joined but doesn't show up.</summary><p>it updates every hour. make sure you followed them back.</p></details>
+        <details class="rv"><summary>does a friend who already has sttar count?</summary><p>no. new accounts only.</p></details>
+        <details class="rv"><summary>can the friends i bring get their own link?</summary><p>yes.</p></details>
+        <details class="rv"><summary>is there a limit?</summary><p>no limit.</p></details>
+        <details class="rv"><summary>something looks wrong.</summary><p>email <a href="mailto:hello@sttar.com?subject=Halloween%20link">hello@sttar.com</a></p></details>
       </div>
     </div>
   </section>
 </main>
 
-<div class="bar" id="bar" aria-hidden="true"><a class="btn" href="#join" tabindex="-1">get my link</a><a class="btn btn--invert" href="#progress" tabindex="-1" style="flex:none;padding:0 18px;background:var(--cream-2)">my progress</a></div>
+<div class="bar" id="bar" aria-hidden="true"><a class="btn" href="#join" tabindex="-1">get my link</a><a class="btn btn--line" href="#progress" tabindex="-1" style="flex:none;padding:0 18px">my progress</a></div>
 
 <footer>
   <div class="foot-cta"><a class="btn btn--invert" href="#join">get my link</a></div>
@@ -342,7 +355,7 @@
   // polaroid stack (same behaviour as sttar.com/join)
   (function () {
     var GH = "https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/halloween/halloween-";
-    var SHOTS = [[7,"oct 31","happy halloween"],[2,"oct 26","pumpkin heads"],[1,"oct 30","carving night"],[4,"oct 30","the porch"],[10,"oct 31","the spread"],[6,"oct 31","three witches"],[3,"oct 29","pumpkin table"],[8,"oct 31","ghost pizza"],[9,"oct 31","pumpkin cookies"],[5,"oct 30","carving station"]];
+    var SHOTS = [[3,"oct 29","pumpkin table"],[2,"oct 26","pumpkin heads"],[1,"oct 30","carving night"],[10,"oct 31","the spread"],[4,"oct 30","the porch"],[6,"oct 31","three witches"],[7,"oct 31","happy halloween"],[8,"oct 31","ghost pizza"],[9,"oct 31","pumpkin cookies"],[5,"oct 30","carving station"]];
     var el = document.getElementById("stack"), cards = [], reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     SHOTS.forEach(function (s, i) {
       var c = document.createElement("div"); c.className = "card";
