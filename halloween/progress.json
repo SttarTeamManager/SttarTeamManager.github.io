@@ -1,1 +1,41 @@
-{"updated": "2026-10-31T21:28:53Z", "referrers": [{"u": "sttarboy", "name": "Adam", "link": "sttar.com/join/adam", "joined": 1, "streaking": 0, "verified": 0, "needFollowBack": 0}, {"u": "alexa", "name": "Alexa", "link": "sttar.com/join/alexa", "joined": 0, "streaking": 0, "verified": 0, "needFollowBack": 0}, {"u": "zach_coren", "name": "Zach", "link": "sttar.com/join/zach", "joined": 0, "streaking": 0, "verified": 0, "needFollowBack": 0}, {"u": "sofiialynds", "name": "Sofi", "link": "sttar.com/join/sofi", "joined": 0, "streaking": 0, "verified": 0, "needFollowBack": 0}]}
+{
+  "updated": "2026-10-31T22:28:47Z",
+  "referrers": [
+    {
+      "u": "sttarboy",
+      "name": "Adam",
+      "link": "sttar.com/join/adam",
+      "joined": 1,
+      "streaking": 0,
+      "verified": 0,
+      "needFollowBack": 0
+    },
+    {
+      "u": "alexa",
+      "name": "Alexa",
+      "link": "sttar.com/join/alexa",
+      "joined": 0,
+      "streaking": 0,
+      "verified": 0,
+      "needFollowBack": 0
+    },
+    {
+      "u": "zach_coren",
+      "name": "Zach",
+      "link": "sttar.com/join/zach",
+      "joined": 0,
+      "streaking": 0,
+      "verified": 0,
+      "needFollowBack": 0
+    },
+    {
+      "u": "sofiialynds",
+      "name": "Sofi",
+      "link": "sttar.com/join/sofi",
+      "joined": 0,
+      "streaking": 0,
+      "verified": 0,
+      "needFollowBack": 0
+    }
+  ]
+}
