@@ -341,12 +341,12 @@
 
   // polaroid stack (same behaviour as sttar.com/join)
   (function () {
-    var GH = "https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(";
-    var SHOTS = [[21,"oct 31","the whole crew"],[10,"oct 31","costumes on"],[25,"oct 31","1am"],[14,"oct 30","pregame"],[23,"nov 1","the aftermath"],[15,"oct 29","front row"]];
+    var GH = "https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/halloween/halloween-";
+    var SHOTS = [[7,"oct 31","happy halloween"],[2,"oct 26","pumpkin heads"],[1,"oct 30","carving night"],[4,"oct 30","the porch"],[10,"oct 31","the spread"],[6,"oct 31","three witches"],[3,"oct 29","pumpkin table"],[8,"oct 31","ghost pizza"],[9,"oct 31","pumpkin cookies"],[5,"oct 30","carving station"]];
     var el = document.getElementById("stack"), cards = [], reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     SHOTS.forEach(function (s, i) {
       var c = document.createElement("div"); c.className = "card";
-      c.innerHTML = '<div class="ph" style="background-image:url(\'' + GH + s[0] + ').jpg\')"></div><div class="row"><span>' + s[1] + '</span><b>' + s[2] + '</b></div>';
+      c.innerHTML = '<div class="ph" style="background-image:url(\'' + GH + s[0] + '.jpg\')"></div><div class="row"><span>' + s[1] + '</span><b>' + s[2] + '</b></div>';
       c.dataset.tilt = (i % 2 ? -1 : 1) * (6 + (i * 3) % 4);
       el.appendChild(c); cards.push(c);
     });
@@ -443,8 +443,8 @@
   });
 
   // progress
-  var PH = "https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/sttar.com-page-images/photo%20(";
-  var PICS = [1,3,4,7,8,9,10,11,14,15,17,19,20,21,23,25];
+  var PH = "https://raw.githubusercontent.com/SttarTeamManager/sttar.com-page-images/refs/heads/main/halloween/halloween-";
+  var PICS = [7,2,1,4,10,6,3,8,9,5];
   var data = null;
   function ago(iso) {
     var m = Math.round((Date.now() - new Date(iso).getTime()) / 6e4);
@@ -473,7 +473,7 @@
     for (var i = start; i < goal; i++) {
       var on = i < n, rot = ((i * 37) % 9) - 4;
       slots += '<div class="slot' + (on ? ' on' : '') + '" style="--r:' + rot + 'deg;' + (on ? 'animation-delay:' + ((i - start) * 50) + 'ms' : '') + '"><i' +
-        (on ? ' style="background-image:url(\'' + PH + PICS[i % PICS.length] + ').jpg\')"' : '') + '></i></div>';
+        (on ? ' style="background-image:url(\'' + PH + PICS[i % PICS.length] + '.jpg\')"' : '') + '></i></div>';
     }
     box.innerHTML =
       '<div class="earned"><span class="amt">' + money(payout(n)) + '</span><span class="to">' + n + ' friends count<br>' + to + '</span></div>' +
