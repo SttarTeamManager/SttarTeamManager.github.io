@@ -139,6 +139,9 @@
   .tally b { color:var(--ink); font-weight:700; font-variant-numeric:tabular-nums; }
   .note { margin:16px 0 0; font-size:15px; color:var(--body); }
   .note a { color:var(--pink); font-weight:600; text-decoration:none; }
+  .linkrow { display:flex; align-items:center; gap:10px; margin-top:18px; padding:8px 8px 8px 16px; background:var(--cream); border-radius:8px; }
+  .linktext { flex:1; min-width:0; font-weight:600; font-size:16px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .copy { flex:none; min-width:72px; }
   .board { list-style:none; margin:0; padding:0; }
   .board li { display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:12px; padding:12px 14px; font-size:17px; }
   .board li:nth-child(odd) { background:var(--cream); }
@@ -493,8 +496,19 @@
       '<div class="slots" aria-hidden="true">' + slots + '</div>' +
       '<div class="tally"><span><b>' + r.joined + '</b> joined</span><span><b>' + r.streaking + '</b> on a streak</span><span><b>' + n + '</b> count</span></div>' +
       (r.needFollowBack ? '<p class="note">' + r.needFollowBack + (r.needFollowBack === 1 ? ' friend follows' : ' friends follow') + ' you and you haven\'t followed back. follow back so they count.</p>' : '') +
-      (r.link ? '<p class="note">your link: <a href="https://' + esc(r.link) + '">' + esc(r.link) + '</a></p>' : '');
+      (r.link ? '<div class="linkrow"><span class="linktext">' + esc(r.link) + '</span><button class="btn btn--sm copy" type="button" data-link="https://' + esc(r.link) + '">copy</button></div>' : '');
   }
+  document.getElementById("result").addEventListener("click", function (e) {
+    var b = e.target.closest(".copy"); if (!b) return;
+    var t = b.getAttribute("data-link");
+    function ok() { b.textContent = "copied"; setTimeout(function () { b.textContent = "copy"; }, 1600); }
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, fallback); } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length);
+      try { document.execCommand("copy"); ok(); } catch (x) {} document.body.removeChild(ta);
+    }
+  });
   document.getElementById("lookup").addEventListener("submit", function (e) { e.preventDefault(); show(document.getElementById("l-user").value); });
   fetch("progress.json?t=" + Math.floor(Date.now() / 3e5), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (j) {
     data = j; board();
