@@ -179,7 +179,8 @@
   summary::-webkit-details-marker { display:none; }
   summary::after { content:"+"; font-weight:500; color:var(--muted); }
   details[open] summary::after { content:"–"; }
-  details p { margin:10px 0 0; color:var(--body); font-size:16px; }
+  details p { margin:10px 0 0; color:var(--body); font-size:16px; line-height:1.6; }
+  details p b { color:var(--ink); }
   details a { color:var(--ink); font-weight:600; }
 
   /* footer */
@@ -334,6 +335,9 @@
     <div class="split">
       <div class="rv"><h2>questions.</h2></div>
       <div class="faq">
+        <details class="rv" open><summary>what counts as a friend?</summary><p>all three:<br>1. they make a <b>new</b> sttar account from your link<br>2. they follow you <b>and you follow them back</b><br>3. they post a sttar of the day <b>3 days in a row</b> (their own time)</p></details>
+        <details class="rv"><summary>what does 3 days in a row mean?</summary><p>a sttar of the day on three back-to-back days, like fri, sat, sun. missing a day restarts it. streaks must finish by nov 18.</p></details>
+        <details class="rv"><summary>do i have to follow them back?</summary><p>yes. a friend only counts once you follow each other. "my progress" shows if anyone is waiting on a follow-back.</p></details>
         <details class="rv"><summary>when do i get paid?</summary><p>once, by nov 20.</p></details>
         <details class="rv"><summary>my friend joined but doesn't show up.</summary><p>it updates every hour. make sure you followed them back.</p></details>
         <details class="rv"><summary>does a friend who already has sttar count?</summary><p>no. new accounts only.</p></details>
