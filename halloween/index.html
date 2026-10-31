@@ -127,6 +127,11 @@
   .lookup input { margin:0; flex:1; min-width:0; }
   .lookup .btn { flex:none; width:auto; }
   .result { margin-top:26px; }
+  .result.in { animation:rise .35s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes rise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+  .found { margin:0 0 14px; font-size:15px; font-weight:600; color:#1E7A3C; }
+  .found::before { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:currentColor; margin-right:8px; vertical-align:1px; }
+  .found.no { color:var(--muted); }
   .earned { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
   .earned .amt { font-size:clamp(48px, 6vw, 72px); font-weight:700; letter-spacing:-0.05em; line-height:.9; font-variant-numeric:tabular-nums; }
   .earned .to { font-size:15px; color:var(--body); text-align:right; }
@@ -141,7 +146,7 @@
   .note a { color:var(--pink); font-weight:600; text-decoration:none; }
   .linkrow { display:flex; align-items:center; gap:10px; margin-top:18px; padding:8px 8px 8px 16px; background:var(--cream); border-radius:8px; }
   .linktext { flex:1; min-width:0; font-weight:600; font-size:16px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .copy { flex:none; min-width:72px; }
+  .linkrow .btn.copybtn { flex:none; width:auto; min-width:96px; }
   .board { list-style:none; margin:0; padding:0; }
   .board li { display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:12px; padding:12px 14px; font-size:17px; }
   .board li:nth-child(odd) { background:var(--cream); }
@@ -264,7 +269,7 @@
     <div class="split">
       <div class="rv">
         <h2>get your link.</h2>
-        <p class="sub">we email it to you within the hour</p>
+        <p class="sub">we email it to you within 30 minutes</p>
       </div>
       <div class="panel rv">
         <form id="signup" novalidate>
@@ -279,7 +284,7 @@
         </form>
         <div class="done" id="done" hidden>
           <h3>you're in.</h3>
-          <p>check your email within the hour (and spam).</p>
+          <p>check your email within 30 minutes (and spam).</p>
         </div>
       </div>
     </div>
@@ -482,7 +487,7 @@
     if (!u) { box.hidden = true; return; }
     if (!data) { box.innerHTML = '<p class="empty">still loading. try again in a second.</p>'; return; }
     var r = (data.referrers || []).filter(function (x) { return x.u.toLowerCase() === u; })[0];
-    if (!r) { box.innerHTML = '<p class="empty">no @' + esc(u) + ' yet. if you just signed up, you\'ll show up within the hour.</p>'; return; }
+    if (!r) { box.innerHTML = '<p class="found no">no @' + esc(u) + ' yet</p><p class="empty">just signed up? you\'ll show up within 30 minutes.</p>'; return; }
     var n = r.verified, goal = n < 10 ? 10 : n < 20 ? 20 : Math.ceil((n + 1) / 10) * 10;
     var to = n < 10 ? (10 - n) + " more until $15" : n < 20 ? (20 - n) + " more to $30" : "+$2 for each friend after this";
     var shown = Math.min(n, goal), start = goal - 10, slots = "";
@@ -492,16 +497,17 @@
         (on ? ' style="background-image:url(\'' + PH + PICS[i % PICS.length] + '.jpg\')"' : '') + '></i></div>';
     }
     box.innerHTML =
+      '<p class="found">found @' + esc(r.u) + '</p>' +
       '<div class="earned"><span class="amt">' + money(payout(n)) + '</span><span class="to">' + n + ' friends count<br>' + to + '</span></div>' +
       '<div class="slots" aria-hidden="true">' + slots + '</div>' +
       '<div class="tally"><span><b>' + r.joined + '</b> joined</span><span><b>' + r.streaking + '</b> on a streak</span><span><b>' + n + '</b> count</span></div>' +
       (r.needFollowBack ? '<p class="note">' + r.needFollowBack + (r.needFollowBack === 1 ? ' friend follows' : ' friends follow') + ' you and you haven\'t followed back. follow back so they count.</p>' : '') +
-      (r.link ? '<div class="linkrow"><span class="linktext">' + esc(r.link) + '</span><button class="btn btn--sm copy" type="button" data-link="https://' + esc(r.link) + '">copy</button></div>' : '');
+      (r.link ? '<div class="linkrow"><span class="linktext">' + esc(r.link) + '</span><button class="btn btn--sm copybtn" type="button" data-link="https://' + esc(r.link) + '">copy link</button></div>' : '');
   }
   document.getElementById("result").addEventListener("click", function (e) {
-    var b = e.target.closest(".copy"); if (!b) return;
+    var b = e.target.closest(".copybtn"); if (!b) return;
     var t = b.getAttribute("data-link");
-    function ok() { b.textContent = "copied"; setTimeout(function () { b.textContent = "copy"; }, 1600); }
+    function ok() { b.textContent = "copied"; setTimeout(function () { b.textContent = "copy link"; }, 1600); }
     if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(ok, fallback); } else { fallback(); }
     function fallback() {
       var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
@@ -509,7 +515,23 @@
       try { document.execCommand("copy"); ok(); } catch (x) {} document.body.removeChild(ta);
     }
   });
-  document.getElementById("lookup").addEventListener("submit", function (e) { e.preventDefault(); show(document.getElementById("l-user").value); });
+  var lbtn = document.querySelector("#lookup .btn");
+  document.getElementById("lookup").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var u = document.getElementById("l-user").value, box = document.getElementById("result");
+    if (!u.trim()) { box.hidden = false; box.innerHTML = '<p class="empty">type your sttar username first.</p>'; return; }
+    lbtn.disabled = true; lbtn.textContent = "checking…"; box.classList.remove("in");
+    var t0 = Date.now();
+    fetch("progress.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); })
+      .then(function (j) { data = j; board(); }).catch(function () {})
+      .then(function () {
+        setTimeout(function () {
+          lbtn.disabled = false; lbtn.textContent = "check";
+          show(u); box.classList.add("in");
+          box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, Math.max(0, 450 - (Date.now() - t0)));
+      });
+  });
   fetch("progress.json?t=" + Math.floor(Date.now() / 3e5), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (j) {
     data = j; board();
     var saved = null; try { saved = localStorage.getItem("sttar_halloween_user"); } catch (x) {}

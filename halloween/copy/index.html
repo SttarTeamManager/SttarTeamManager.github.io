@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>your link · Sttar</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="theme-color" content="#F7F1EA">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#F7F1EA; --cream-2:#EFE7DC; --ink:#121212; --ink-2:#2A2A2A; --body:#3A3633; --gutter:24px; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100dvh; display:flex; flex-direction:column; background:var(--cream); color:var(--ink);
+         font:400 17px/1.5 'Inter',system-ui,-apple-system,sans-serif; -webkit-font-smoothing:antialiased; }
+  nav { padding:18px var(--gutter); }
+  .lockup { display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:16px; letter-spacing:-0.04em; text-decoration:none; color:var(--ink); }
+  .lockup svg { width:20px; height:20px; }
+  main { flex:1; display:flex; flex-direction:column; justify-content:center; padding:24px var(--gutter) 64px; max-width:520px; width:100%; margin:0 auto; }
+  h1 { font-size:clamp(44px, 12vw, 72px); line-height:.92; letter-spacing:-0.045em; font-weight:700; margin:0 0 28px; }
+  .link { background:var(--ink); color:#fff; padding:22px 20px; border-radius:2px; font-size:clamp(20px, 6vw, 26px); font-weight:700; letter-spacing:-0.03em;
+          word-break:break-all; user-select:all; -webkit-user-select:all; }
+  .btn { display:flex; align-items:center; justify-content:center; width:100%; height:56px; margin-top:14px; border:0; border-radius:8px; cursor:pointer;
+         background:var(--ink); color:#fff; font:600 17px 'Inter',system-ui,sans-serif; letter-spacing:-0.01em; text-decoration:none; transition:background .15s, transform .15s; }
+  .btn:hover { background:var(--ink-2); }
+  .btn:active { background:#000; transform:scale(.98); }
+  .btn--line { background:transparent; color:var(--ink); border:1.5px solid var(--ink); }
+  .btn--line:hover, .btn--line:active { background:var(--cream-2); }
+  .more { margin-top:22px; font-size:15px; color:var(--body); text-align:center; }
+  .more a { color:var(--ink); font-weight:600; }
+  :focus-visible { outline:3px solid rgba(18,18,18,.35); outline-offset:2px; }
+</style>
+</head>
+<body>
+<nav>
+  <a class="lockup" href="/" aria-label="Sttar home">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 0C18 0 18.244 6.801 20.561 11.274C23.892 7.273 26.997 2.454 26.997 2.454C26.997 2.454 23.944 8.361 22.154 13.544C22.165 13.555 22.176 13.566 22.187 13.577C26.016 17.4 36 18 36 18C36 18 26.117 18.459 22.287 22.289C18.457 26.119 18 36 18 36C18 36 17.669 29.232 15.381 24.731C12.068 28.768 9.003 33.535 9.003 33.535C9.003 33.535 12.03 27.694 13.874 22.494C13.813 22.428 13.751 22.363 13.688 22.3C9.858 18.47 0 18 0 18C0 18 9.883 17.541 13.713 13.711C17.543 9.881 18 0 18 0Z" fill="currentColor"/></svg>
+    Sttar: Social Archive
+  </a>
+</nav>
+<main>
+  <h1>your link.</h1>
+  <div class="link" id="link">sttar.com/join</div>
+  <button class="btn" id="copy" type="button">copy link</button>
+  <button class="btn btn--line" id="share" type="button" hidden>share</button>
+  <p class="more"><a href="/halloween/#progress">my progress</a></p>
+</main>
+<script>
+(function () {
+  var raw = new URLSearchParams(location.search).get("l") || "";
+  var path = raw.replace(/^https?:\/\//, "").replace(/^(www\.)?sttar\.com\//, "").replace(/\/+$/, "");
+  if (!/^join\/[a-z0-9-]{1,40}$/.test(path)) path = "join";
+  var text = "sttar.com/" + path, url = "https://" + text;
+  document.getElementById("link").textContent = text;
+
+  var copy = document.getElementById("copy");
+  function done() { copy.textContent = "copied"; setTimeout(function () { copy.textContent = "copy link"; }, 1800); }
+  function fallback() {
+    var ta = document.createElement("textarea"); ta.value = url; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta);
+    ta.select(); ta.setSelectionRange(0, url.length);
+    try { document.execCommand("copy"); done(); } catch (x) {}
+    document.body.removeChild(ta);
+  }
+  copy.addEventListener("click", function () {
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(done, fallback); else fallback();
+  });
+
+  if (navigator.share) {
+    var sh = document.getElementById("share"); sh.hidden = false;
+    sh.addEventListener("click", function () { navigator.share({ url: url }).catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
