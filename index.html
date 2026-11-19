@@ -52,6 +52,12 @@ a{color:var(--text-heading);text-decoration:none}
 .nav-brand svg{width:20px;height:20px;display:block}
 .nav-brand span{font-weight:700;font-size:16px;letter-spacing:-0.04em;line-height:1;color:#fff}
 .nav-tag{position:absolute;left:50%;transform:translateX(-50%);text-align:center;font-size:13px;font-weight:500;letter-spacing:0.02em;color:#fff;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-grow,.nav-dl{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:500;letter-spacing:0.01em;white-space:nowrap}
+.nav-grow{color:#fff;border:1px solid #fff}
+.nav-right .nav-dl{background:#fff;color:#000}
+.nav-grow .g-short{display:none}
+@media (max-width:599.98px){.nav-grow .g-long{display:none}.nav-grow .g-short{display:inline}.nav-right{gap:8px}.nav-grow,.nav-dl{height:32px;padding:0 10px;font-size:13px}}
 .nav-dl{font-size:14px;font-weight:500;color:#fff;letter-spacing:0.01em}
 .stage{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden}
 .card{position:absolute;left:50%;top:50%;width:150px;margin:-104px 0 0 -75px;background:var(--surface-white);padding:10px 10px 36px;box-shadow:0 14px 34px rgba(18,18,18,0.22);will-change:transform;opacity:0;pointer-events:auto}
@@ -154,7 +160,7 @@ html.lenis,html.lenis body{height:auto}
       <span>Sttar: Social Archive</span>
     </a>
     <div class="nav-tag">your groups. your moments. your archive.</div>
-    <a href="https://app.sttar.com" class="nav-dl">download</a>
+    <div class="nav-right"><a href="https://grow.sttar.com" class="nav-grow"><span class="g-long">become an ambassador</span><span class="g-short">ambassadors</span></a><a href="https://app.sttar.com" class="nav-dl">download</a></div>
   </div>
 
   <!-- PHOTO STREAM (positioned by the script below) -->
